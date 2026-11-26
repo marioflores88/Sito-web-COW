@@ -3,694 +3,811 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="COW Entertainment: holding dell'entertainment. ETES Sport, ETES Theatre, Arena Flegrea, Make It Happen e Noisy Naples Fest.">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta name="description" content="COW Entertainment, holding dell'entertainment: ETES Sport, ETES Theatre, Arena Flegrea, Make It Happen e Noisy Naples Fest.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
 </head>
 <body>
 <title>COW Entertainment</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout: istituzionale a colonna larga; barra di navigazione fissa, una vista per società (hash), struttura del gruppo come albero */
+/* Layout: corporate a blocchi pieni. Barra nera con mega-menu, hero a carosello a tutta larghezza, sezioni alternate bianco/nero, viste per società via hash */
 :root{
-  --bg:#f4f5f9; --surface:#ffffff; --ink:#12162a; --muted:#565d78; --line:#dcdfe9;
-  --accent:#3b2393; --accent-soft:#ece8fb; --plate:#ffffff;
-  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
-  --body:"Public Sans","Segoe UI",Roboto,Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --black:#000000; --ink:#111114; --white:#ffffff; --paper:#f4f4f6; --grey:#6b6b76; --line:#e3e3e8; --line-dark:#2a2a31;
+  --violet:#7b3cff; --violet-soft:#b597ff;
   --spectrum:linear-gradient(90deg,#1fb6ff,#7b3cff 30%,#ff2fb0 60%,#ff9a1f 85%,#ffd21f);
-  --w:1180px; --r:10px;
+  --display:"Inter Tight","Helvetica Neue",Arial,sans-serif;
+  --body:"Inter","Segoe UI",Roboto,Arial,sans-serif;
+  --w:1320px;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0d1020; --surface:#151a2e; --ink:#eceef6; --muted:#a3a9c2; --line:#272d46;
-  --accent:#a995ff; --accent-soft:#221c45; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0d1020; --surface:#151a2e; --ink:#eceef6; --muted:#a3a9c2; --line:#272d46;
-  --accent:#a995ff; --accent-soft:#221c45; color-scheme:dark}
-
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--white);color:var(--ink);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--black)}
 a{color:inherit}
-h1,h2,h3{font-family:var(--display);font-stretch:88%;line-height:1.1;text-wrap:balance;margin:0;letter-spacing:-.01em}
-h1{font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:800}
-h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:750}
-h3{font-size:1.2rem;font-weight:700}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.04;letter-spacing:-.025em;text-wrap:balance}
 p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
 .wrap{max-width:var(--w);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.eyebrow{font:500 .74rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.lead{font-size:1.15rem;color:var(--muted);max-width:62ch}
-.prose{max-width:66ch;display:grid;gap:1rem}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+@media (min-width:900px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+.kicker{font:600 .8rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.arrow-link{display:inline-flex;align-items:center;gap:.6rem;font-weight:600;text-decoration:none;font-size:1rem}
+.arrow-link::after{content:"";width:22px;height:2px;background:currentColor;transition:width .25s}
+.arrow-link:hover::after{width:34px}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.5rem;font-weight:600;text-decoration:none;border:2px solid currentColor;transition:background .2s,color .2s;cursor:pointer;background:none}
+.btn.solid{background:var(--white);color:var(--black);border-color:var(--white)}
+.btn.solid:hover{background:var(--violet);border-color:var(--violet);color:var(--white)}
+.btn.dark{background:var(--black);color:var(--white);border-color:var(--black)}
+.btn.dark:hover{background:var(--violet);border-color:var(--violet)}
 
-/* header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
-.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--spectrum)}
-.top .wrap{display:flex;align-items:center;gap:1.5rem;min-height:64px}
-.brand{display:flex;align-items:baseline;gap:.6rem;text-decoration:none;white-space:nowrap}
-.brand b{font:800 1.15rem/1 var(--display);font-stretch:80%;letter-spacing:.04em}
-.brand span{font:500 .7rem/1 var(--mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
-.nav{display:flex;gap:.25rem;margin-left:auto;flex-wrap:wrap}
-.nav a{text-decoration:none;font-size:.88rem;font-weight:500;color:var(--muted);padding:.45rem .7rem;border-radius:6px}
-.nav a:hover{color:var(--ink);background:var(--bg)}
-.nav a[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}
-.menu-btn{display:none;margin-left:auto;font:600 .85rem var(--body);color:var(--ink);background:none;border:1px solid var(--line);border-radius:6px;padding:.45rem .8rem;cursor:pointer}
-@media (max-width:980px){
-  .menu-btn{display:block}
-  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line);flex-direction:column;padding:.5rem max(16px,env(safe-area-inset-right,0px)) 1rem max(16px,env(safe-area-inset-left,0px))}
-  .nav.open{display:flex}
-  .nav a{padding:.7rem .6rem}
+/* ===== header ===== */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--black);color:var(--white)}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--spectrum)}
+.top .wrap{display:flex;align-items:center;gap:2rem;height:72px}
+.logo{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;flex:none}
+.logo b{font:800 1.75rem/1 var(--display);letter-spacing:-.04em}
+.logo span{font:500 .72rem/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:#bdbdc6}
+.menu{display:flex;gap:.25rem;margin:0;padding:0;list-style:none;height:100%}
+.menu>li{display:flex;align-items:stretch}
+.menu>li>a,.menu>li>button{display:flex;align-items:center;gap:.35rem;padding:0 1rem;background:none;border:0;font-weight:500;font-size:.95rem;text-decoration:none;cursor:pointer;color:#e8e8ee;border-bottom:3px solid transparent;margin-bottom:3px}
+.menu>li>button::after{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.menu>li>button[aria-expanded="true"]::after{transform:rotate(-135deg) translateY(-2px)}
+.menu>li>a:hover,.menu>li>button:hover,.menu>li>button[aria-expanded="true"],.menu>li>a[aria-current="page"]{color:var(--white);border-bottom-color:var(--violet)}
+.tools{display:flex;align-items:center;gap:.5rem;margin-left:auto}
+.icon-btn{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;cursor:pointer;color:var(--white)}
+.icon-btn svg{width:22px;height:22px}
+.burger{display:none}
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--black);color:var(--white);border-top:1px solid var(--line-dark);padding-block:2.5rem 3rem;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.mega .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr));gap:2.5rem;height:auto}
+.mega h3{font-size:1.9rem;font-weight:700;margin-bottom:.8rem}
+.mega p{color:#b9b9c4;max-width:34ch}
+.mega h4{font:600 .78rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--violet-soft);margin-bottom:1rem}
+.mega ul{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.mega li a{text-decoration:none;font-size:1.05rem;font-weight:500}
+.mega li a small{display:block;color:#9a9aa6;font-size:.85rem;font-weight:400}
+.mega li a:hover{color:var(--violet-soft)}
+@media (max-width:1060px){
+  .menu{display:none}
+  .burger{display:grid}
+  .menu.open{display:flex;position:fixed;inset:calc(72px + env(safe-area-inset-top,0px)) 0 0 0;flex-direction:column;background:var(--black);overflow:auto;padding:1rem max(16px,env(safe-area-inset-right,0px)) 3rem max(16px,env(safe-area-inset-left,0px));height:auto;gap:0}
+  .menu.open>li{flex-direction:column;border-bottom:1px solid var(--line-dark)}
+  .menu.open>li>a,.menu.open>li>button{padding:1.1rem 0;font-size:1.25rem;justify-content:space-between;border:0;margin:0}
+  .mega{position:static;box-shadow:none;border:0;padding:0 0 1.5rem}
+  .mega .wrap{grid-template-columns:1fr;gap:1.5rem;padding:0}
+  .mega .intro{display:none}
 }
 
-/* views */
-[data-view]{animation:fade .35s ease}
-@keyframes fade{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){[data-view]{animation:none}}
-section.block{scroll-margin-top:70px;padding-block:clamp(3rem,7vw,5.5rem)}
-section.block + section.block{border-top:1px solid var(--line)}
-.sec-head{display:grid;gap:.8rem;margin-bottom:2.5rem;max-width:70ch}
+/* ===== search ===== */
+.search{position:fixed;inset:0;z-index:80;background:#000;color:var(--white);overflow:auto;padding-top:env(safe-area-inset-top,0px)}
+.search .wrap{padding-block:2rem 4rem}
+.search-head{display:flex;justify-content:flex-end}
+.search label{display:block;font:600 .8rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:#a9a9b4;margin:1.5rem 0 1rem}
+.search input{width:100%;background:none;border:0;border-bottom:2px solid #444;color:var(--white);font:700 clamp(1.8rem,5vw,3.4rem)/1.2 var(--display);padding:.4rem 0;letter-spacing:-.02em}
+.search input::-webkit-search-cancel-button{display:none}
+.search input:focus{outline:none;border-bottom-color:var(--violet)}
+.results{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:0}
+.results a{display:grid;gap:.25rem;padding:1.1rem 0;border-bottom:1px solid var(--line-dark);text-decoration:none}
+.results a:hover b{color:var(--violet-soft)}
+.results b{font:700 1.3rem/1.2 var(--display)}
+.results span{color:#a9a9b4;font-size:.92rem}
+.results em{font-style:normal;font:600 .72rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--violet-soft)}
+.suggest{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.suggest button{background:none;border:1px solid #444;color:#ddd;padding:.45rem .9rem;border-radius:99px;cursor:pointer;font-size:.9rem}
+.suggest button:hover{border-color:var(--violet);color:#fff}
 
-/* hero */
-.hero{background:var(--surface);border-bottom:1px solid var(--line)}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
-.hero-text{display:grid;gap:1.4rem;min-width:0}
-.plate{background:var(--plate);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.25rem,3vw,2.5rem);display:grid;gap:1rem;justify-items:center}
-.plate img{display:block;width:100%;max-width:520px;height:auto}
-.plate small{font:500 .72rem/1 var(--mono);letter-spacing:.16em;color:#3b2393;text-transform:uppercase}
-.facts{display:flex;flex-wrap:wrap;gap:2.5rem;padding-top:.5rem}
-.facts div{display:grid;gap:.2rem}
-.facts strong{font:750 2rem/1 var(--display);font-stretch:85%;font-variant-numeric:tabular-nums}
-.facts span{font-size:.85rem;color:var(--muted)}
-.btns{display:flex;flex-wrap:wrap;gap:.75rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:600;font-size:.95rem;padding:.75rem 1.2rem;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
-.btn:hover{border-color:var(--accent)}
-@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}}
+/* ===== hero carousel ===== */
+.hero{position:relative;background:var(--black);color:var(--white);overflow:hidden}
+.slides{position:relative;min-height:clamp(520px,78vh,760px)}
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility .9s}
+.slide.on{opacity:1;visibility:visible}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none;transform:scale(1.06);transition:transform 8s ease-out}
+.slide.on img{transform:scale(1)}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.05) 80%),linear-gradient(0deg,rgba(0,0,0,.7),transparent 40%)}
+.slide .wrap{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;gap:1.5rem;padding-block:4rem 7rem}
+.slide .kicker{color:var(--violet-soft)}
+.slide h1,.slide h2{font-size:clamp(2.6rem,6.4vw,5.6rem);font-weight:800;max-width:14ch}
+.slide p{font-size:clamp(1.05rem,1.5vw,1.3rem);color:#dcdce4;max-width:52ch}
+.hero-ctrl{position:absolute;left:0;right:0;bottom:0;z-index:3}
+.hero-ctrl .wrap{display:flex;align-items:center;gap:1.25rem;padding-block:1.75rem}
+.dots{display:flex;gap:.6rem;flex:1;max-width:640px}
+.dot{flex:1;min-width:0;background:none;border:0;padding:.6rem 0;cursor:pointer;text-align:left;color:#9a9aa6}
+.dot span{display:block;font-size:.8rem;font-weight:600;margin-bottom:.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dot i{display:block;height:3px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
+.dot i::after{content:"";position:absolute;inset:0;background:var(--white);transform:scaleX(0);transform-origin:left}
+.dot.on{color:var(--white)}
+.dot.on i::after{animation:fill var(--dur,7s) linear forwards}
+.dot.done i::after{transform:scaleX(1)}
+.hero.paused .dot.on i::after{animation-play-state:paused}
+@keyframes fill{to{transform:scaleX(1)}}
+.round{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:rgba(0,0,0,.3);color:var(--white);display:grid;place-items:center;cursor:pointer;flex:none}
+.round:hover{background:var(--white);color:var(--black)}
+.round svg{width:18px;height:18px}
+@media (max-width:640px){.dot span{display:none}.slide .wrap{padding-bottom:6rem}}
 
-/* tree */
-.tree{display:grid;gap:0;justify-items:center}
-.node{display:grid;gap:.6rem;text-decoration:none;justify-items:center;text-align:center}
-.node .tile{width:100%;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);transition:transform .2s,box-shadow .2s}
-.node .tile img{display:block;width:100%;height:auto}
-.node:hover .tile{transform:translateY(-3px);box-shadow:0 10px 30px -12px rgba(18,22,42,.35)}
-.node .name{font:700 1rem/1.2 var(--display);font-stretch:90%}
-.node .role{font-size:.8rem;color:var(--muted);margin-top:-.35rem}
-.root-node{width:min(100%,380px)}
-.root-node .tile{background:var(--plate);padding:1rem 1.4rem}
-.stem{width:2px;height:32px;background:var(--line)}
-.kids{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;width:100%;position:relative;padding-top:32px}
-.kids::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;background:var(--line)}
-.kid{position:relative;display:grid;align-content:start;justify-items:center}
-.kid::before{content:"";position:absolute;top:-32px;left:50%;width:2px;height:32px;background:var(--line)}
-.kid .node{width:100%}
-.sub{display:grid;justify-items:center;width:100%}
-.sub .stem{background:#1aa9ac}
-.sub .node{width:88%}
-@media (max-width:820px){
-  .tree{justify-items:stretch}
-  .root-node{margin:0 auto}
-  .tree>.stem{margin:0 0 0 12px}
-  .kids{grid-template-columns:1fr;padding-top:0;gap:1rem;border-left:2px solid var(--line);margin-left:12px;padding-left:20px;width:auto}
-  .kids::before{display:none}
-  .kid::before{top:50px;left:-20px;width:20px;height:2px}
-  .kid .node{grid-template-columns:150px minmax(0,1fr);justify-items:start;text-align:left;align-items:center;column-gap:1rem}
-  .kid .node .tile{grid-row:span 2}
-  .kid .node .role{margin-top:0}
-  .sub{justify-items:start;padding-left:2rem}
-  .sub .stem{height:16px;margin-left:75px}
-  .sub .node{width:100%}
+/* ===== sections ===== */
+.sec{padding-block:clamp(4rem,8vw,7rem)}
+.sec.dark{background:var(--black);color:var(--white)}
+.sec.paper{background:var(--paper)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2rem,4vw,3.5rem)}
+.sec-head h2{font-size:clamp(2.2rem,4.6vw,4rem);font-weight:800;max-width:18ch}
+.sec-head .kicker{display:block;margin-bottom:1rem;color:var(--violet)}
+.dark .sec-head .kicker{color:var(--violet-soft)}
+.sec-head p{max-width:52ch;color:var(--grey);font-size:1.1rem}
+.dark .sec-head p{color:#b9b9c4}
+
+/* intro statement */
+.statement{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:start}
+.statement h2{font-size:clamp(2rem,4vw,3.4rem);font-weight:800}
+.statement .txt{display:grid;gap:1.25rem;font-size:1.15rem;color:#33333b}
+@media (max-width:860px){.statement{grid-template-columns:1fr}}
+
+/* card rail (insights) */
+.rail-wrap{position:relative}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,1fr);gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;scrollbar-width:thin}
+@media (min-width:900px){.rail{grid-auto-columns:calc((100% - 3rem)/3)}}
+.ins{scroll-snap-align:start;display:grid;grid-template-rows:auto 1fr;text-decoration:none;background:var(--white);color:var(--ink);min-width:0}
+.dark .ins{background:#121216;color:var(--white)}
+.ins figure{margin:0;aspect-ratio:16/10;overflow:hidden;background:#111;max-width:100%}
+.ins figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.ins:hover figure img{transform:scale(1.05)}
+.ins .b{padding:1.5rem 1.5rem 1.75rem;display:grid;gap:.75rem;align-content:start}
+.ins .meta{display:flex;gap:.75rem;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--violet)}
+.dark .ins .meta{color:var(--violet-soft)}
+.ins .meta time{color:var(--grey);font-weight:500}
+.ins h3{font-size:1.45rem;font-weight:700;line-height:1.15}
+.ins p{color:var(--grey);font-size:.97rem}
+.dark .ins p,.dark .ins .meta time{color:#a9a9b4}
+.rail-nav{display:flex;gap:.75rem}
+.rail-nav .round{border-color:var(--ink);color:var(--ink);background:none}
+.rail-nav .round:hover{background:var(--ink);color:var(--white)}
+.dark .rail-nav .round{border-color:#fff;color:#fff}
+.dark .rail-nav .round:hover{background:#fff;color:#000}
+
+/* tabs: what we do */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line-dark);margin-bottom:3rem;overflow-x:auto}
+.tab{background:none;border:0;border-bottom:3px solid transparent;color:#9a9aa6;font:700 clamp(1.1rem,2vw,1.6rem)/1 var(--display);letter-spacing:-.02em;padding:1rem 1.75rem 1.1rem 0;margin-right:1.75rem;cursor:pointer;white-space:nowrap;margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--white);border-bottom-color:var(--violet)}
+.tab:hover{color:var(--white)}
+.panel{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.panel figure{margin:0;aspect-ratio:16/10;overflow:hidden;max-width:100%}
+.panel figure img{width:100%;height:100%;object-fit:cover}
+.panel .txt{display:grid;gap:1.25rem;min-width:0}
+.panel h3{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800}
+.panel p{color:#c4c4ce;font-size:1.1rem}
+.panel ul{list-style:none;padding:0;margin:.5rem 0 0;display:grid;border-top:1px solid var(--line-dark)}
+.panel li a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line-dark);text-decoration:none;font-weight:600;font-size:1.1rem}
+.panel li a small{color:#9a9aa6;font-weight:400;font-size:.9rem}
+.panel li a:hover{color:var(--violet-soft)}
+@media (max-width:860px){.panel{grid-template-columns:1fr}}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.nums div{padding:2rem 1.5rem 0 0;display:grid;gap:.6rem;align-content:start;border-right:1px solid var(--line);padding-right:1.5rem;margin-right:1.5rem}
+.nums div:last-child{border-right:0;margin-right:0}
+.nums strong{font:800 clamp(3rem,6vw,5.2rem)/.95 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums;background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nums span{color:var(--grey);font-size:1rem;max-width:22ch}
+@media (max-width:860px){.nums{grid-template-columns:1fr 1fr}.nums div{border-right:0;margin-right:0;padding-bottom:1.5rem;border-bottom:1px solid var(--line)}}
+
+/* feature banner */
+.banner{position:relative;color:var(--white);background:var(--black);overflow:hidden}
+.banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.35) 60%,rgba(0,0,0,.1))}
+.banner .wrap{position:relative;z-index:1;padding-block:clamp(5rem,10vw,9rem);display:grid;gap:1.5rem;justify-items:start}
+.banner h2{font-size:clamp(2.2rem,5vw,4.4rem);font-weight:800;max-width:16ch}
+.banner p{max-width:50ch;font-size:1.15rem;color:#dcdce4}
+.banner .kicker{color:var(--violet-soft)}
+
+/* companies grid */
+.cos{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.co{background:var(--white);display:grid;grid-template-rows:auto 1fr;text-decoration:none;min-width:0}
+.co .lg{display:grid;place-items:center;aspect-ratio:16/9;max-width:100%}
+.co .lg img{width:74%}
+.co .b{padding:1.4rem 1.5rem 1.6rem;display:grid;gap:.5rem;align-content:start}
+.co h3{font-size:1.3rem;font-weight:700}
+.co p{color:var(--grey);font-size:.94rem}
+.co:hover h3{color:var(--violet)}
+
+/* structure tree */
+.tree{display:grid;justify-items:center}
+.tnode{display:grid;justify-items:center;gap:.5rem;text-decoration:none;text-align:center}
+.tnode .tile{width:100%;overflow:hidden;border:1px solid var(--line);transition:transform .2s}
+.tnode:hover .tile{transform:translateY(-3px)}
+.tnode b{font:700 1rem/1.2 var(--display)}
+.tnode small{color:var(--grey);font-size:.82rem}
+.troot{width:min(100%,360px)}
+.troot .tile{background:#fff;padding:.8rem 1.2rem}
+.tstem{width:2px;height:32px;background:#c8c8d0}
+.tkids{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;width:100%;position:relative;padding-top:32px}
+.tkids::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;background:#c8c8d0}
+.tkid{position:relative;display:grid;justify-items:center;align-content:start}
+.tkid::before{content:"";position:absolute;top:-32px;left:50%;width:2px;height:32px;background:#c8c8d0}
+.tkid>.tnode{width:100%}
+.tsub{display:grid;justify-items:center;width:100%}
+.tsub .tstem{background:#1aa9ac}
+.tsub .tnode{width:88%}
+@media (max-width:860px){
+  .tkids{grid-template-columns:1fr 1fr;padding-top:1.5rem}
+  .tkids::before,.tkid::before{display:none}
+  .tree>.tstem{height:20px}
 }
 
-/* pillars */
-.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.pillar{background:var(--surface);padding:2rem;display:grid;gap:1rem;align-content:start}
-.pillar p{color:var(--muted)}
-.pillar ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem;border-top:1px solid var(--line);padding-top:1rem}
-.pillar li a{font-weight:600;text-decoration:none;display:flex;justify-content:space-between;gap:1rem}
-.pillar li a:hover{color:var(--accent)}
-.pillar li a span{color:var(--muted);font-weight:400;font-size:.88rem}
-@media (max-width:820px){.pillars{grid-template-columns:1fr}}
-
-/* chain */
-.chain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;counter-reset:c}
-.chain div{display:grid;gap:.5rem;padding-top:1rem;border-top:2px solid var(--ink)}
-.chain div::before{counter-increment:c;content:"Fase " counter(c);font:500 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.chain p{color:var(--muted)}
-@media (max-width:820px){.chain{grid-template-columns:1fr}}
-
-/* company cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem}
-.card{display:grid;grid-template-rows:auto 1fr;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:border-color .2s}
-.card:hover{border-color:var(--accent)}
-.card .logo{display:grid;place-items:center;aspect-ratio:16/8;max-width:100%}
-.card .logo img{width:78%;height:auto}
-.card .body{padding:1.25rem 1.4rem 1.5rem;display:grid;gap:.5rem;align-content:start}
-.card .body p{color:var(--muted);font-size:.94rem}
-.card .more{font-weight:600;font-size:.9rem;color:var(--accent);margin-top:.3rem}
-
-/* company page */
-.band{color:#fff}
-.band .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:clamp(2rem,5vw,4rem);align-items:center;padding-block:clamp(2.5rem,6vw,4.5rem)}
-.band .txt{display:grid;gap:1.1rem;min-width:0}
-.band .eyebrow{color:var(--brand-hi)}
-.band .lead{color:rgba(255,255,255,.78)}
-.band img{width:100%;height:auto;display:block;border-radius:var(--r)}
-.crumbs{font-size:.85rem;color:rgba(255,255,255,.65);display:flex;gap:.5rem;flex-wrap:wrap}
+/* ===== company page ===== */
+.phero{position:relative;color:var(--white);background:var(--black);overflow:hidden}
+.phero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.phero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.5) 55%,rgba(0,0,0,.15))}
+.phero .wrap{position:relative;z-index:1;padding-block:clamp(3.5rem,8vw,7rem);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:3rem;align-items:end}
+.phero .txt{display:grid;gap:1.25rem;min-width:0}
+.phero h1{font-size:clamp(2.8rem,6.5vw,5.6rem);font-weight:800}
+.phero p{font-size:1.2rem;color:#dcdce4;max-width:52ch}
+.crumbs{display:flex;flex-wrap:wrap;gap:.5rem;font-size:.85rem;color:#b9b9c4}
 .crumbs a{text-decoration:none}
 .crumbs a:hover{color:#fff;text-decoration:underline}
-@media (max-width:820px){.band .wrap{grid-template-columns:1fr}.band .logo-col{order:-1;max-width:360px}}
-.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:clamp(2rem,6vw,5rem);align-items:start}
-@media (max-width:820px){.split{grid-template-columns:1fr}}
-.aside{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:1.5rem;display:grid;gap:1rem}
-.aside dl{margin:0;display:grid;gap:.9rem}
-.aside dt{font:500 .7rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
-.aside dd{margin:0;font-weight:600}
-.aside dd a{color:var(--accent);text-decoration:none}
-.feats{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.feat{background:var(--surface);padding:1.6rem;display:grid;gap:.5rem;align-content:start}
-.feat .k{font:500 .7rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.feat p{color:var(--muted);font-size:.94rem}
-.tags{display:flex;flex-wrap:wrap;gap:.5rem}
-.tags span{font-size:.82rem;font-weight:500;padding:.3rem .65rem;border:1px solid var(--line);border-radius:99px;background:var(--surface);color:var(--muted)}
-.pager{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.pager a{display:grid;gap:.3rem;text-decoration:none;border:1px solid var(--line);border-radius:var(--r);padding:1.2rem 1.4rem;background:var(--surface)}
-.pager a:hover{border-color:var(--accent)}
-.pager a:last-child{text-align:right}
-.pager small{font:500 .7rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.pager b{font-family:var(--display);font-stretch:90%;font-size:1.1rem}
-.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
-.timeline li{position:relative;padding:0 0 1.6rem 1.6rem;display:grid;gap:.25rem}
-.timeline li:last-child{padding-bottom:0}
-.timeline li::before{content:"";position:absolute;left:-7px;top:.35rem;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
-.timeline b{font:750 1.15rem/1.2 var(--display);font-stretch:85%;font-variant-numeric:tabular-nums}
-.timeline p{color:var(--muted);max-width:60ch}
-.days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
-.day{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:1.5rem;display:grid;gap:.8rem;align-content:start}
-.day ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
-.day li{font:700 1.25rem/1.25 var(--display);font-stretch:88%}
-@media (max-width:640px){.days{grid-template-columns:1fr}}
-.contacts{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem}
-.contact{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:1.5rem;display:grid;gap:.9rem;align-content:start}
-.contact dl{margin:0;display:grid;gap:.75rem}
-.contact dt{font:500 .7rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
-.contact dd{margin:0;font-weight:500;overflow-wrap:anywhere;user-select:all}
-.contact dd a{color:var(--accent);text-decoration:none;user-select:auto}
-.src{font-size:.82rem;color:var(--muted)}
-.site-link{display:grid;gap:.7rem;text-decoration:none;color:#fff;justify-items:start}
-.site-link img{transition:transform .2s,box-shadow .2s}
-.site-link:hover img{transform:translateY(-3px);box-shadow:0 14px 34px -14px rgba(0,0,0,.7)}
-.site-link span{font:500 .78rem/1 var(--mono);letter-spacing:.1em;color:var(--brand-hi);border-bottom:1px solid currentColor;padding-bottom:.2rem}
-.quote{font:600 clamp(1.3rem,2.4vw,1.75rem)/1.35 var(--display);font-stretch:92%;max-width:40ch;text-wrap:balance}
+.brandlink{display:grid;gap:.6rem;text-decoration:none;justify-items:start}
+.brandlink img{border:1px solid rgba(255,255,255,.2);transition:transform .2s}
+.brandlink:hover img{transform:translateY(-3px)}
+.brandlink span{font-size:.85rem;font-weight:600;border-bottom:2px solid var(--violet);padding-bottom:.15rem}
+@media (max-width:860px){.phero .wrap{grid-template-columns:1fr}.phero .brandlink{max-width:260px}}
+.subnav{position:sticky;top:calc(72px + env(safe-area-inset-top,0px));z-index:40;background:var(--white);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:2rem;overflow-x:auto;height:58px;align-items:stretch}
+.subnav a{display:flex;align-items:center;text-decoration:none;font-weight:600;font-size:.95rem;color:var(--grey);border-bottom:3px solid transparent;white-space:nowrap}
+.subnav a:hover{color:var(--ink);border-bottom-color:var(--violet)}
+[data-view] section[id]{scroll-margin-top:140px}
+.two{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:start}
+.two .txt{display:grid;gap:1.25rem;font-size:1.12rem;color:#33333b;min-width:0}
+.two h2{font-size:clamp(2rem,3.6vw,3rem);font-weight:800}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.facts{border-top:3px solid var(--ink);display:grid}
+.facts div{display:grid;gap:.3rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.facts dt{font:600 .75rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+.facts dd{margin:0;font-weight:600}
+.facts dd a{color:var(--violet);text-decoration:none}
+.facts dd a:hover{text-decoration:underline}
+dl.facts{margin:0}
+.caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line-dark)}
+.cap{padding:2rem 2rem 2.25rem 0;border-bottom:1px solid var(--line-dark);display:grid;gap:.75rem;align-content:start;margin-right:2rem}
+.cap .n{font:600 .78rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--violet-soft)}
+.cap h3{font-size:1.5rem;font-weight:700}
+.cap p{color:#b9b9c4}
+@media (max-width:960px){.caps{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.caps{grid-template-columns:1fr}.cap{margin-right:0}}
+.timeline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border-top:3px solid var(--ink)}
+.timeline li{padding:1.5rem 1.25rem 0 0;display:grid;gap:.6rem;align-content:start;position:relative}
+.timeline li::before{content:"";position:absolute;top:-9px;left:0;width:15px;height:15px;border-radius:50%;background:var(--white);border:3px solid var(--violet)}
+.timeline b{font:800 1.6rem/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.timeline p{color:var(--grey);font-size:.95rem}
+@media (max-width:960px){.timeline{grid-template-columns:1fr;border-top:0;border-left:3px solid var(--ink);padding-left:1.5rem}.timeline li{padding:0 0 1.75rem}.timeline li::before{left:calc(-1.5rem - 9px);top:.3rem}}
+.lineup{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.day{background:#121216;padding:2rem;display:grid;gap:1rem;align-content:start}
+.day .kicker{color:var(--violet-soft)}
+.day ul{list-style:none;margin:0;padding:0;display:grid;gap:.2rem}
+.day li{font:800 clamp(1.6rem,3vw,2.4rem)/1.15 var(--display);letter-spacing:-.03em}
+@media (max-width:700px){.lineup{grid-template-columns:1fr}}
+.season{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}
+.month{border-top:3px solid var(--ink);padding-top:1rem;display:grid;gap:.6rem;align-content:start}
+.month b{font:700 1.2rem/1 var(--display)}
+.month ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem;color:#33333b}
+@media (max-width:860px){.season{grid-template-columns:1fr 1fr}}
+.pager{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.pager a{padding:2rem 0;text-decoration:none;display:grid;gap:.4rem}
+.pager a:last-child{text-align:right;border-left:1px solid var(--line);padding-left:1.5rem}
+.pager small{font:600 .78rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+.pager b{font:700 clamp(1.3rem,2.4vw,2rem)/1.1 var(--display)}
+.pager a:hover b{color:var(--violet)}
+
+/* news view */
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem}
+.chip{background:none;border:1.5px solid var(--ink);padding:.55rem 1.1rem;border-radius:99px;font-weight:600;font-size:.9rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--white)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem 1.5rem}
+.grid3 .ins{background:none}
+.grid3 .ins .b{padding:1.25rem 0 0}
+
+/* contacts */
+.contacts{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0;border-top:3px solid var(--ink)}
+.contact{padding:2rem 2rem 2rem 0;border-bottom:1px solid var(--line);display:grid;gap:1rem;align-content:start}
+.contact h3{font-size:1.5rem;font-weight:700}
+.contact dl{margin:0;display:grid;gap:.8rem}
+.contact dt{font:600 .72rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-bottom:.25rem}
+.contact dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.contact dd a{color:var(--violet);text-decoration:none}
+.copy{background:none;border:0;color:var(--violet);font-weight:600;font-size:.82rem;cursor:pointer;padding:0;margin-left:.5rem}
 
 /* footer */
-footer{background:var(--surface);border-top:1px solid var(--line)}
-footer .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:2rem;padding-block:3rem}
-footer h4{font:500 .7rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 .9rem}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
-footer a{text-decoration:none;font-size:.92rem}
-footer a:hover{color:var(--accent)}
-footer p{color:var(--muted);font-size:.92rem;max-width:36ch}
-.legal{border-top:1px solid var(--line)}
-.legal .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-block:1.2rem;font-size:.8rem;color:var(--muted);grid-template-columns:none}
-@media (max-width:820px){footer .wrap{grid-template-columns:1fr 1fr}footer .wrap>div:first-child{grid-column:1/-1}}
+footer{background:var(--black);color:var(--white)}
+footer .wrap{padding-block:4rem 2rem}
+.f-top{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(4,minmax(0,1fr));gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid var(--line-dark)}
+.f-top .logo b{font-size:2.4rem}
+.f-top p{color:#a9a9b4;margin-top:1rem;max-width:34ch}
+footer h4{font:600 .78rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:#8a8a96;margin-bottom:1.1rem}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.65rem}
+footer ul a{text-decoration:none;color:#e6e6ec}
+footer ul a:hover{color:var(--violet-soft)}
+.f-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:1.5rem;color:#8a8a96;font-size:.85rem}
+@media (max-width:960px){.f-top{grid-template-columns:1fr 1fr}.f-top>div:first-child{grid-column:1/-1}}
+.totop{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:45;width:48px;height:48px;border-radius:50%;background:var(--violet);color:#fff;border:0;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 24px -8px rgba(0,0,0,.5)}
+.totop svg{width:18px;height:18px}
+[data-view]{animation:vin .4s ease}
+@keyframes vin{from{opacity:.5}to{opacity:1}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.5" fill="none"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7" stroke="currentColor" stroke-width="2.5" fill="none"/></symbol>
+</svg>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#gruppo"><b>COW ENTERTAINMENT</b><span>Holding</span></a>
-    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav class="nav" id="nav" aria-label="Navigazione principale">
-      <a href="#gruppo">Il Gruppo</a>
-      <a href="#etes-sport">ETES Sport</a>
-      <a href="#etes-theatre">ETES Theatre</a>
-      <a href="#arena-flegrea">Arena Flegrea</a>
-      <a href="#make-it-happen">Make It Happen</a>
-      <a href="#noisy-naples-fest">Noisy Naples Fest</a>
-      <a href="#contatti">Contatti</a>
-    </nav>
+    <a class="logo" href="#gruppo" aria-label="COW Entertainment, home"><b>COW</b><span>Entertainment</span></a>
+    <ul class="menu" id="menu">
+      <li>
+        <button type="button" aria-expanded="false" aria-controls="m-chi">Chi siamo</button>
+        <div class="mega" id="m-chi" hidden><div class="wrap">
+          <div class="intro"><h3>Chi siamo</h3><p>Una holding napoletana che riunisce tecnologia per il ticketing, un'arena monumentale e la produzione di musica dal vivo.</p></div>
+          <div><h4>Il gruppo</h4><ul><li><a href="#gruppo">Panoramica<small>Missione e numeri</small></a></li><li><a href="#struttura">Struttura del gruppo<small>Le società e i marchi</small></a></li></ul></div>
+          <div><h4>Contatti</h4><ul><li><a href="#contatti">Sedi e recapiti<small>Tutte le società</small></a></li></ul></div>
+          <div><h4>Notizie</h4><ul><li><a href="#news">Novità dal gruppo<small>Festival, stagioni, piattaforme</small></a></li></ul></div>
+        </div></div>
+      </li>
+      <li>
+        <button type="button" aria-expanded="false" aria-controls="m-cosa">Cosa facciamo</button>
+        <div class="mega" id="m-cosa" hidden><div class="wrap">
+          <div class="intro"><h3>Cosa facciamo</h3><p>Tre competenze che coprono l'intera filiera dell'evento dal vivo, dalla produzione al biglietto.</p></div>
+          <div><h4>Tecnologia</h4><ul><li><a href="#etes-sport">ETES Sport<small>Piattaforma software polivalente</small></a></li><li><a href="#etes-theatre">ETES Theatre<small>Ticketing per i teatri</small></a></li></ul></div>
+          <div><h4>Luoghi</h4><ul><li><a href="#arena-flegrea">Arena Flegrea<small>Monumento e luogo di spettacolo</small></a></li></ul></div>
+          <div><h4>Produzione</h4><ul><li><a href="#make-it-happen">Make It Happen<small>Concerti e live entertainment</small></a></li><li><a href="#noisy-naples-fest">Noisy Naples Fest<small>Festival internazionale</small></a></li></ul></div>
+        </div></div>
+      </li>
+      <li><a href="#news">Notizie</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <div class="tools">
+      <button class="icon-btn" type="button" id="open-search" aria-label="Cerca nel sito"><svg><use href="#i-search"/></svg></button>
+      <button class="icon-btn burger" type="button" id="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><svg><use href="#i-menu"/></svg></button>
+    </div>
   </div>
 </header>
 
+<div class="search" id="search" hidden role="dialog" aria-modal="true" aria-label="Cerca nel sito">
+  <div class="wrap">
+    <div class="search-head"><button class="icon-btn" type="button" id="close-search" aria-label="Chiudi la ricerca"><svg><use href="#i-close"/></svg></button></div>
+    <label for="q">Cerca nel sito</label>
+    <input id="q" type="search" placeholder="Arena, festival, biglietteria…" autocomplete="off">
+    <div class="suggest" id="suggest"><button type="button">Arena Flegrea</button><button type="button">Planimetria 3D</button><button type="button">Kasabian</button><button type="button">Abbonamenti</button><button type="button">Contatti</button></div>
+    <ul class="results" id="results"></ul>
+  </div>
+</div>
+
 <main>
 
-<!-- ============ GRUPPO ============ -->
+<!-- ================= HOME ================= -->
 <div data-view="gruppo">
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-text">
-        <span class="eyebrow">Holding dell'entertainment</span>
-        <h1>Tecnologia, luoghi e produzione dal vivo in un unico gruppo.</h1>
-        <p class="lead">COW Entertainment (Come On Web S.r.l., Napoli) è la holding che riunisce piattaforme di ticketing, la gestione di un'arena monumentale e la produzione di concerti e festival. Ogni società opera con un proprio marchio e una propria specializzazione; insieme coprono l'intera filiera dell'evento.</p>
-        <div class="btns">
-          <a class="btn primary" href="#struttura">Struttura del gruppo</a>
-          <a class="btn" href="#aree">Aree di attività</a>
-        </div>
-        <div class="facts">
-          <div><strong>4</strong><span>società del gruppo</span></div>
-          <div><strong>6.000</strong><span>posti all'Arena Flegrea</span></div>
-          <div><strong>9</strong><span>edizioni di Noisy Naples Fest</span></div>
-        </div>
+  <section class="hero" id="hero" aria-roledescription="carosello" aria-label="In primo piano">
+    <div class="slides">
+      <div class="slide on" aria-label="1 di 4">
+        <img src="img/scene-ribbons.jpg" alt="" width="1600" height="900">
+        <div class="wrap"><span class="kicker">COW Entertainment</span><h1>L'entertainment, dalla tecnologia al palco.</h1><p>Una holding, quattro società, un ecosistema: piattaforme di ticketing, un'arena monumentale e la produzione di concerti e festival.</p><div><a class="btn solid" href="#struttura">Scopri il gruppo</a></div></div>
       </div>
-      <div class="plate">
-        <img src="img/cow.png" alt="Logo COW Entertainment" width="768" height="236">
-        <small>Holding</small>
+      <div class="slide" aria-label="2 di 4">
+        <img src="img/scene-arena.jpg" alt="" width="1600" height="900" loading="lazy">
+        <div class="wrap"><span class="kicker">Arena Flegrea</span><h2>La seconda arena d'Italia.</h2><p>Un monumento vincolato nel cuore della Mostra d'Oltremare, con una programmazione di rilievo nazionale e internazionale.</p><div><a class="btn solid" href="#arena-flegrea">Visita l'Arena</a></div></div>
+      </div>
+      <div class="slide" aria-label="3 di 4">
+        <img src="img/scene-festival.jpg" alt="" width="1600" height="900" loading="lazy">
+        <div class="wrap"><span class="kicker">Noisy Naples Fest · 9ª edizione</span><h2>Napoli alza il volume.</h2><p>Franz Ferdinand, Kasabian, Skunk Anansie e altri artisti internazionali alla Mostra d'Oltremare, il 23 e 24 luglio 2026.</p><div><a class="btn solid" href="#noisy-naples-fest">Scopri il festival</a></div></div>
+      </div>
+      <div class="slide" aria-label="4 di 4">
+        <img src="img/scene-stadium.jpg" alt="" width="1600" height="900" loading="lazy">
+        <div class="wrap"><span class="kicker">ETES Sport</span><h2>Il posto giusto, visto in 3D.</h2><p>Ticketing, CRM, marketing e intelligenza artificiale in un'unica piattaforma, con la planimetria 3D degli impianti.</p><div><a class="btn solid" href="#etes-sport">Scopri la piattaforma</a></div></div>
+      </div>
+    </div>
+    <div class="hero-ctrl"><div class="wrap">
+      <div class="dots" role="tablist" aria-label="Scegli la notizia">
+        <button class="dot on" type="button" role="tab" aria-selected="true"><span>Il gruppo</span><i></i></button>
+        <button class="dot" type="button" role="tab" aria-selected="false"><span>Arena Flegrea</span><i></i></button>
+        <button class="dot" type="button" role="tab" aria-selected="false"><span>Noisy Naples Fest</span><i></i></button>
+        <button class="dot" type="button" role="tab" aria-selected="false"><span>ETES Sport</span><i></i></button>
+      </div>
+      <button class="round" type="button" id="h-prev" aria-label="Precedente"><svg><use href="#i-left"/></svg></button>
+      <button class="round" type="button" id="h-next" aria-label="Successiva"><svg><use href="#i-right"/></svg></button>
+      <button class="round" type="button" id="h-pause" aria-label="Metti in pausa"><svg><use href="#i-pause"/></svg></button>
+    </div></div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap statement">
+      <h2>Creiamo valore in ogni momento dell'evento dal vivo.</h2>
+      <div class="txt">
+        <p>COW Entertainment, ragione sociale Come On Web S.r.l., è la holding napoletana che riunisce quattro realtà dell'entertainment. Ogni società lavora con il proprio marchio e la propria specializzazione.</p>
+        <p>Insieme coprono l'intera filiera: Make It Happen produce concerti e festival, l'Arena Flegrea li ospita, ETES Sport ed ETES Theatre vendono i biglietti e conoscono il pubblico.</p>
+        <div><a class="arrow-link" href="#struttura">Struttura del gruppo</a></div>
       </div>
     </div>
   </section>
 
-  <section class="block" id="struttura">
+  <section class="sec dark">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Struttura del gruppo</span>
-        <h2>Una holding, quattro società, un ecosistema.</h2>
-        <p class="lead">COW Entertainment detiene la proprietà di ETES Sport ed ETES Theatre, la gestione dell'Arena Flegrea e il controllo di Make It Happen, fondatrice e proprietaria del marchio Noisy Naples Fest. Seleziona una società per aprirne la scheda.</p>
+        <div><span class="kicker">Cosa facciamo</span><h2>Tre competenze, un'unica filiera.</h2></div>
       </div>
+      <div class="tabs" role="tablist" aria-label="Aree di attività">
+        <button class="tab" type="button" role="tab" id="t-tech" aria-controls="p-tech" aria-selected="true">Tecnologia</button>
+        <button class="tab" type="button" role="tab" id="t-luoghi" aria-controls="p-luoghi" aria-selected="false" tabindex="-1">Luoghi</button>
+        <button class="tab" type="button" role="tab" id="t-prod" aria-controls="p-prod" aria-selected="false" tabindex="-1">Produzione</button>
+      </div>
+      <div class="panel" id="p-tech" role="tabpanel" aria-labelledby="t-tech">
+        <figure><img src="img/scene-data.jpg" alt="Rete di dati luminosa" width="1600" height="900" loading="lazy"></figure>
+        <div class="txt"><h3>Piattaforme software per vendere e gestire l'evento.</h3><p>Ticketing, CRM, marketing, planimetria 3D e integrazione con i sistemi amministrativi, con strumenti di intelligenza artificiale.</p>
+          <ul><li><a href="#etes-sport">ETES Sport <small>Piattaforma polivalente</small></a></li><li><a href="#etes-theatre">ETES Theatre <small>Teatri e spettacolo</small></a></li></ul></div>
+      </div>
+      <div class="panel" id="p-luoghi" role="tabpanel" aria-labelledby="t-luoghi" hidden>
+        <figure><img src="img/scene-arena.jpg" alt="La cavea dell'Arena Flegrea al tramonto" width="1600" height="900" loading="lazy"></figure>
+        <div class="txt"><h3>Un monumento che vive di spettacolo.</h3><p>La gestione dell'Arena Flegrea, la seconda arena d'Italia dopo Verona: circa 6.000 posti in un bene vincolato della Mostra d'Oltremare.</p>
+          <ul><li><a href="#arena-flegrea">Arena Flegrea <small>Napoli</small></a></li></ul></div>
+      </div>
+      <div class="panel" id="p-prod" role="tabpanel" aria-labelledby="t-prod" hidden>
+        <figure><img src="img/scene-stage.jpg" alt="Palco con fasci di luce" width="1600" height="900" loading="lazy"></figure>
+        <div class="txt"><h3>Musica, concerti e festival dal vivo.</h3><p>Produzione di concerti e spettacoli in tutta Italia, servizi tecnici e un festival internazionale di proprietà nella città di Napoli.</p>
+          <ul><li><a href="#make-it-happen">Make It Happen <small>Produzione live</small></a></li><li><a href="#noisy-naples-fest">Noisy Naples Fest <small>Festival</small></a></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="kicker">Notizie</span><h2>Dal gruppo</h2></div>
+        <div class="rail-nav"><button class="round" type="button" data-rail="-1" aria-label="Notizie precedenti"><svg><use href="#i-left"/></svg></button><button class="round" type="button" data-rail="1" aria-label="Notizie successive"><svg><use href="#i-right"/></svg></button></div>
+      </div>
+      <div class="rail" id="rail"></div>
+      <div style="margin-top:2rem"><a class="arrow-link" href="#news">Tutte le notizie</a></div>
+    </div>
+  </section>
+
+  <section class="sec paper">
+    <div class="wrap">
+      <div class="nums">
+        <div><strong>4</strong><span>società nel gruppo</span></div>
+        <div><strong>6.000</strong><span>posti all'Arena Flegrea</span></div>
+        <div><strong>9</strong><span>edizioni di Noisy Naples Fest</span></div>
+        <div><strong>2015</strong><span>inizio della gestione privata dell'Arena</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner">
+    <img src="img/scene-theatre.jpg" alt="" width="1600" height="900" loading="lazy">
+    <div class="wrap"><span class="kicker">ETES Theatre</span><h2>Il ticketing pensato per la sala.</h2><p>Piante con platea, palchi, galleria e loggione, abbonamenti a turni, riduzioni e botteghino: le regole del teatro, in un unico sistema.</p><a class="btn solid" href="#etes-theatre">Scopri ETES Theatre</a></div>
+  </section>
+
+  <section class="sec" id="struttura">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="kicker">Struttura del gruppo</span><h2>Una holding, quattro società.</h2></div><p>COW Entertainment detiene la proprietà di ETES Sport ed ETES Theatre, la gestione dell'Arena Flegrea e Make It Happen, fondatrice e proprietaria di Noisy Naples Fest.</p></div>
       <div class="tree">
-        <div class="node root-node">
-          <div class="tile"><img src="img/cow.png" alt="COW Entertainment" width="768" height="236"></div>
-          <span class="name">COW Entertainment</span>
-          <span class="role">Holding</span>
-        </div>
-        <div class="stem"></div>
-        <div class="kids">
-          <div class="kid">
-            <a class="node" href="#etes-sport"><div class="tile"><img src="img/etes-sport.png" alt="" width="501" height="270"></div><span class="name">ETES Sport</span><span class="role">Proprietà · Piattaforma software</span></a>
-          </div>
-          <div class="kid">
-            <a class="node" href="#etes-theatre"><div class="tile"><img src="img/etes-theatre.png" alt="" width="496" height="265"></div><span class="name">ETES Theatre</span><span class="role">Proprietà · Ticketing per lo spettacolo</span></a>
-          </div>
-          <div class="kid">
-            <a class="node" href="#arena-flegrea"><div class="tile"><img src="img/arena-flegrea.png" alt="" width="502" height="270"></div><span class="name">Arena Flegrea</span><span class="role">Gestione · Arena monumentale</span></a>
-          </div>
-          <div class="kid">
-            <a class="node" href="#make-it-happen"><div class="tile"><img src="img/make-it-happen.png" alt="" width="500" height="270"></div><span class="name">Make It Happen</span><span class="role">Controllata · Produzione live</span></a>
-            <div class="sub">
-              <div class="stem"></div>
-              <a class="node" href="#noisy-naples-fest"><div class="tile"><img src="img/noisy.png" alt="" width="500" height="204"></div><span class="name">Noisy Naples Fest</span><span class="role">Marchio di Make It Happen</span></a>
-            </div>
+        <div class="tnode troot"><div class="tile"><img src="img/cow.png" alt="COW Entertainment" width="768" height="236"></div><b>COW Entertainment</b><small>Holding · Come On Web S.r.l.</small></div>
+        <div class="tstem"></div>
+        <div class="tkids">
+          <div class="tkid"><a class="tnode" href="#etes-sport"><div class="tile"><img src="img/etes-sport.png" alt="" width="501" height="270"></div><b>ETES Sport</b><small>Proprietà</small></a></div>
+          <div class="tkid"><a class="tnode" href="#etes-theatre"><div class="tile"><img src="img/etes-theatre.png" alt="" width="496" height="265"></div><b>ETES Theatre</b><small>Proprietà</small></a></div>
+          <div class="tkid"><a class="tnode" href="#arena-flegrea"><div class="tile"><img src="img/arena-flegrea.png" alt="" width="502" height="270"></div><b>Arena Flegrea</b><small>Gestione</small></a></div>
+          <div class="tkid"><a class="tnode" href="#make-it-happen"><div class="tile"><img src="img/make-it-happen.png" alt="" width="500" height="270"></div><b>Make It Happen</b><small>Produzione live</small></a>
+            <div class="tsub"><div class="tstem"></div><a class="tnode" href="#noisy-naples-fest"><div class="tile"><img src="img/noisy.png" alt="" width="500" height="204"></div><b>Noisy Naples Fest</b><small>Marchio di Make It Happen</small></a></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="block" id="aree">
+  <section class="sec paper">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Aree di attività</span>
-        <h2>Tre competenze che si completano.</h2>
-      </div>
-      <div class="pillars">
-        <div class="pillar">
-          <span class="eyebrow">Tecnologia</span>
-          <h3>Piattaforme software per vendere e gestire l'evento</h3>
-          <p>Ticketing, CRM, marketing e integrazione con i sistemi amministrativi, con strumenti di intelligenza artificiale e planimetrie 3D.</p>
-          <ul>
-            <li><a href="#etes-sport">ETES Sport <span>Piattaforma polivalente</span></a></li>
-            <li><a href="#etes-theatre">ETES Theatre <span>Teatri e spettacolo</span></a></li>
-          </ul>
-        </div>
-        <div class="pillar">
-          <span class="eyebrow">Luoghi</span>
-          <h3>Gestione di un monumento dedicato allo spettacolo</h3>
-          <p>La seconda arena d'Italia dopo l'Arena di Verona, bene vincolato con una programmazione di rilievo nazionale e internazionale.</p>
-          <ul>
-            <li><a href="#arena-flegrea">Arena Flegrea <span>Napoli</span></a></li>
-          </ul>
-        </div>
-        <div class="pillar">
-          <span class="eyebrow">Produzione</span>
-          <h3>Musica, concerti e festival dal vivo</h3>
-          <p>Produzione musicale e di concerti nel live entertainment, con un festival internazionale di proprietà nella città di Napoli.</p>
-          <ul>
-            <li><a href="#make-it-happen">Make It Happen <span>Produzione live</span></a></li>
-            <li><a href="#noisy-naples-fest">Noisy Naples Fest <span>Festival</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">La filiera</span>
-        <h2>Dall'idea al biglietto, dal biglietto al palco.</h2>
-        <p class="lead">Il gruppo presidia ogni passaggio di un evento dal vivo. Le società lavorano in autonomia e mettono a fattor comune dati, pubblico e competenze.</p>
-      </div>
-      <div class="chain">
-        <div><h3>Produzione</h3><p>Make It Happen ingaggia gli artisti, produce concerti e cura il Noisy Naples Fest.</p></div>
-        <div><h3>Luogo</h3><p>L'Arena Flegrea ospita una stagione di spettacoli in un contesto monumentale unico.</p></div>
-        <div><h3>Pubblico</h3><p>ETES Sport ed ETES Theatre vendono i titoli d'accesso, conoscono il pubblico e lo fidelizzano. ETES è il partner di biglietteria ufficiale di Arena Flegrea e Noisy Naples Fest.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Le società</span>
-        <h2>Le realtà del gruppo</h2>
-      </div>
-      <div class="cards">
-        <a class="card" href="#etes-sport"><div class="logo" style="background:#030306"><img src="img/etes-sport.png" alt="Logo ETES Sport" width="501" height="270"></div><div class="body"><h3>ETES Sport</h3><p>Piattaforma software polivalente: ticketing, CRM, marketing, planimetria 3D, integrazione amministrativa e intelligenza artificiale.</p><span class="more">Apri la scheda →</span></div></a>
-        <a class="card" href="#etes-theatre"><div class="logo" style="background:#4a020b"><img src="img/etes-theatre.png" alt="Logo ETES Theatre" width="496" height="265"></div><div class="body"><h3>ETES Theatre</h3><p>Piattaforma di ticketing verticale per il mondo dello spettacolo e in particolare per i teatri.</p><span class="more">Apri la scheda →</span></div></a>
-        <a class="card" href="#arena-flegrea"><div class="logo" style="background:#131a2b"><img src="img/arena-flegrea.png" alt="Logo Arena Flegrea" width="502" height="270"></div><div class="body"><h3>Arena Flegrea</h3><p>Monumento vincolato, seconda arena d'Italia dopo Verona, con una programmazione nazionale e internazionale.</p><span class="more">Apri la scheda →</span></div></a>
-        <a class="card" href="#make-it-happen"><div class="logo" style="background:#2b2b2b"><img src="img/make-it-happen.png" alt="Logo Make It Happen" width="500" height="270"></div><div class="body"><h3>Make It Happen</h3><p>Produzione di musica e concerti nel live entertainment. Fondatrice e proprietaria di Noisy Naples Fest.</p><span class="more">Apri la scheda →</span></div></a>
-        <a class="card" href="#noisy-naples-fest"><div class="logo" style="background:#13131a"><img src="img/noisy.png" alt="Logo Noisy Naples Fest" width="500" height="204"></div><div class="body"><h3>Noisy Naples Fest</h3><p>Il festival musicale internazionale della città di Napoli.</p><span class="more">Apri la scheda →</span></div></a>
+      <div class="sec-head"><div><span class="kicker">Le società</span><h2>Le realtà del gruppo</h2></div></div>
+      <div class="cos">
+        <a class="co" href="#etes-sport"><div class="lg" style="background:#030306"><img src="img/etes-sport.png" alt="Logo ETES Sport" width="501" height="270" loading="lazy"></div><div class="b"><h3>ETES Sport</h3><p>Ticketing, CRM, marketing, planimetria 3D, amministrazione e intelligenza artificiale.</p></div></a>
+        <a class="co" href="#etes-theatre"><div class="lg" style="background:#4a020b"><img src="img/etes-theatre.png" alt="Logo ETES Theatre" width="496" height="265" loading="lazy"></div><div class="b"><h3>ETES Theatre</h3><p>Ticketing verticale per il mondo dello spettacolo e per i teatri.</p></div></a>
+        <a class="co" href="#arena-flegrea"><div class="lg" style="background:#131a2b"><img src="img/arena-flegrea.png" alt="Logo Arena Flegrea" width="502" height="270" loading="lazy"></div><div class="b"><h3>Arena Flegrea</h3><p>Monumento vincolato, seconda arena d'Italia dopo Verona.</p></div></a>
+        <a class="co" href="#make-it-happen"><div class="lg" style="background:#2b2b2b"><img src="img/make-it-happen.png" alt="Logo Make It Happen" width="500" height="270" loading="lazy"></div><div class="b"><h3>Make It Happen</h3><p>Produzione di concerti, spettacoli ed eventi live in tutta Italia.</p></div></a>
+        <a class="co" href="#noisy-naples-fest"><div class="lg" style="background:#13131a"><img src="img/noisy.png" alt="Logo Noisy Naples Fest" width="500" height="204" loading="lazy"></div><div class="b"><h3>Noisy Naples Fest</h3><p>Il festival musicale internazionale di Napoli, dal 2016.</p></div></a>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ============ ETES SPORT ============ -->
+<!-- ================= ETES SPORT ================= -->
 <div data-view="etes-sport" hidden>
-  <section class="band" style="background:#030306;--brand-hi:#d4f53c">
-    <div class="wrap">
-      <div class="txt">
-        <nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Il Gruppo</a><span>/</span><span>Tecnologia</span><span>/</span><span>ETES Sport</span></nav>
-        <span class="eyebrow">Electronic Ticket Emission · Sport</span>
-        <h1>ETES Sport</h1>
-        <p class="lead">Una piattaforma software polivalente che riunisce in un solo sistema la vendita dei biglietti, la relazione con il pubblico, il marketing, la planimetria 3D degli impianti e l'integrazione con l'amministrazione.</p>
-      </div>
-      <div class="logo-col"><a class="site-link" href="https://www.etes.it/" target="_blank" rel="noopener" title="Vai al sito ETES"><img src="img/etes-sport.png" alt="Logo ETES Sport, vai al sito etes.it" width="501" height="270"><span>Visita etes.it ↗</span></a></div>
-    </div>
+  <section class="phero"><img src="img/scene-stadium.jpg" alt="" width="1600" height="900">
+    <div class="wrap"><div class="txt"><nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Home</a><span>/</span><span>Tecnologia</span><span>/</span><span>ETES Sport</span></nav><span class="kicker" style="color:#d4f53c">Electronic Ticket Emission · Sport</span><h1>ETES Sport</h1><p>Una piattaforma software polivalente: vendita dei biglietti, relazione con il pubblico, marketing, planimetria 3D e integrazione con l'amministrazione, in un solo sistema.</p></div>
+    <a class="brandlink" href="https://www.etes.it/" target="_blank" rel="noopener"><img src="img/etes-sport.png" alt="Logo ETES Sport, apre etes.it" width="501" height="270"><span>Visita etes.it ↗</span></a></div>
   </section>
-  <section class="block">
-    <div class="wrap split">
-      <div class="prose">
-        <span class="eyebrow">La piattaforma</span>
-        <h2>Un unico ambiente, dalla vendita al bilancio.</h2>
-        <p>ETES Sport nasce per chi gestisce stadi, palazzetti e grandi eventi e ha bisogno di uno strumento che vada oltre l'emissione del biglietto. Ogni modulo condivide gli stessi dati: la vendita alimenta il CRM, il CRM alimenta il marketing, gli incassi confluiscono nei sistemi amministrativi senza passaggi manuali.</p>
-        <p>L'intelligenza artificiale lavora sui dati di vendita e di comportamento del pubblico per leggere l'andamento degli eventi, individuare segmenti di clientela e supportare le decisioni commerciali.</p>
-      </div>
-      <aside class="aside">
-        <dl>
-          <div><dt>Ruolo nel gruppo</dt><dd>Società di proprietà di COW Entertainment</dd></div>
-          <div><dt>Area</dt><dd>Tecnologia</dd></div>
-          <div><dt>Destinatari</dt><dd>Club, impianti sportivi, organizzatori di eventi</dd></div>
-          <div><dt>Sede</dt><dd>Come On Web S.r.l. · Centro Direzionale, Isola E/7, 80143 Napoli</dd></div>
-          <div><dt>Sito</dt><dd><a href="https://www.etes.it/" target="_blank" rel="noopener">etes.it</a></dd></div>
-          <div><dt>Società correlate</dt><dd><a href="#etes-theatre">ETES Theatre</a></dd></div>
-        </dl>
-      </aside>
+  <nav class="subnav" aria-label="In questa pagina"><div class="wrap"><a href="#es-panoramica">Panoramica</a><a href="#es-moduli">Moduli</a><a href="#es-info">Informazioni</a></div></nav>
+  <section class="sec" id="es-panoramica"><div class="wrap two">
+    <div class="txt"><span class="kicker" style="color:var(--violet)">La piattaforma</span><h2>Un unico ambiente, dalla vendita al bilancio.</h2><p>ETES Sport nasce per chi gestisce stadi, palazzetti e grandi eventi e ha bisogno di uno strumento che vada oltre l'emissione del biglietto. Ogni modulo condivide gli stessi dati: la vendita alimenta il CRM, il CRM alimenta il marketing, gli incassi confluiscono nei sistemi amministrativi senza passaggi manuali.</p><p>L'intelligenza artificiale lavora sui dati di vendita e di comportamento del pubblico per leggere l'andamento degli eventi, individuare segmenti di clientela e supportare le decisioni commerciali.</p></div>
+    <dl class="facts" id="es-info"><div><dt>Ruolo nel gruppo</dt><dd>Società di proprietà di COW Entertainment</dd></div><div><dt>Destinatari</dt><dd>Club, impianti sportivi, organizzatori di eventi</dd></div><div><dt>Sede</dt><dd>Come On Web S.r.l. · Centro Direzionale, Isola E/7, 80143 Napoli</dd></div><div><dt>Sito</dt><dd><a href="https://www.etes.it/" target="_blank" rel="noopener">etes.it</a></dd></div><div><dt>Società correlate</dt><dd><a href="#etes-theatre">ETES Theatre</a></dd></div></dl>
+  </div></section>
+  <section class="sec dark" id="es-moduli"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Moduli</span><h2>Cosa fa la piattaforma</h2></div></div>
+    <div class="caps">
+      <div class="cap"><span class="n">Ticketing</span><h3>Biglietteria e abbonamenti</h3><p>Emissione di biglietti e abbonamenti su più canali di vendita, con controllo degli accessi.</p></div>
+      <div class="cap"><span class="n">CRM</span><h3>Anagrafica unica del pubblico</h3><p>Ogni acquisto arricchisce il profilo del cliente: storico, preferenze, frequenza e valore.</p></div>
+      <div class="cap"><span class="n">Marketing</span><h3>Campagne mirate</h3><p>Comunicazioni segmentate e promozioni costruite sui dati reali di acquisto.</p></div>
+      <div class="cap"><span class="n">Planimetria 3D</span><h3>Scelta del posto in tre dimensioni</h3><p>Mappe 3D di settori, file e posti, con la visuale sul campo prima dell'acquisto.</p></div>
+      <div class="cap"><span class="n">Amministrazione</span><h3>Integrazione con i gestionali</h3><p>Incassi, corrispettivi e riconciliazioni collegati ai sistemi amministrativi e contabili.</p></div>
+      <div class="cap"><span class="n">Intelligenza artificiale</span><h3>Analisi e previsioni</h3><p>Modelli che leggono l'andamento delle vendite e il comportamento del pubblico per orientare le scelte.</p></div>
     </div>
-  </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Moduli</span><h2>Cosa fa la piattaforma</h2></div>
-      <div class="feats">
-        <div class="feat"><span class="k">Ticketing</span><h3>Biglietteria e abbonamenti</h3><p>Emissione di biglietti e abbonamenti su più canali di vendita, con controllo degli accessi.</p></div>
-        <div class="feat"><span class="k">CRM</span><h3>Anagrafica unica del pubblico</h3><p>Ogni acquisto arricchisce il profilo del cliente: storico, preferenze, frequenza e valore.</p></div>
-        <div class="feat"><span class="k">Marketing</span><h3>Campagne mirate</h3><p>Comunicazioni segmentate e promozioni costruite sui dati reali di acquisto.</p></div>
-        <div class="feat"><span class="k">Planimetria 3D</span><h3>Scelta del posto in tre dimensioni</h3><p>Mappe 3D di settori, file e posti, con la visuale sul campo prima dell'acquisto.</p></div>
-        <div class="feat"><span class="k">Amministrazione</span><h3>Integrazione con i gestionali</h3><p>Incassi, corrispettivi e riconciliazioni collegati ai sistemi amministrativi e contabili.</p></div>
-        <div class="feat"><span class="k">Intelligenza artificiale</span><h3>Analisi e previsioni</h3><p>Modelli che leggono l'andamento delle vendite e il comportamento del pubblico per orientare le scelte.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="block"><div class="wrap pager"><a href="#gruppo"><small>← Indietro</small><b>Il Gruppo</b></a><a href="#etes-theatre"><small>Avanti →</small><b>ETES Theatre</b></a></div></section>
+  </div></section>
+  <section class="banner"><img src="img/scene-data.jpg" alt="" width="1600" height="900" loading="lazy"><div class="wrap"><span class="kicker">Dati e intelligenza artificiale</span><h2>Ogni biglietto racconta il suo pubblico.</h2><p>Vendite, presenze e comportamenti diventano informazioni per programmare, promuovere e fidelizzare.</p></div></section>
+  <section class="sec"><div class="wrap pager"><a href="#gruppo"><small>← Home</small><b>Il gruppo</b></a><a href="#etes-theatre"><small>Avanti →</small><b>ETES Theatre</b></a></div></section>
 </div>
 
-<!-- ============ ETES THEATRE ============ -->
+<!-- ================= ETES THEATRE ================= -->
 <div data-view="etes-theatre" hidden>
-  <section class="band" style="background:#4a020b;--brand-hi:#f7cd6c">
-    <div class="wrap">
-      <div class="txt">
-        <nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Il Gruppo</a><span>/</span><span>Tecnologia</span><span>/</span><span>ETES Theatre</span></nav>
-        <span class="eyebrow">Electronic Theatre Emission System</span>
-        <h1>ETES Theatre</h1>
-        <p class="lead">La piattaforma di ticketing specializzata e verticalizzata per il mondo dello spettacolo, progettata intorno alle esigenze dei teatri.</p>
-      </div>
-      <div class="logo-col"><a class="site-link" href="https://www.etes.it/" target="_blank" rel="noopener" title="Vai al sito ETES"><img src="img/etes-theatre.png" alt="Logo ETES Theatre, vai al sito etes.it" width="496" height="265"><span>Visita etes.it ↗</span></a></div>
-    </div>
+  <section class="phero"><img src="img/scene-theatre.jpg" alt="" width="1600" height="900">
+    <div class="wrap"><div class="txt"><nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Home</a><span>/</span><span>Tecnologia</span><span>/</span><span>ETES Theatre</span></nav><span class="kicker" style="color:#f7cd6c">Electronic Theatre Emission System</span><h1>ETES Theatre</h1><p>La piattaforma di ticketing specializzata e verticalizzata per il mondo dello spettacolo, progettata intorno alle esigenze dei teatri.</p></div>
+    <a class="brandlink" href="https://www.etes.it/" target="_blank" rel="noopener"><img src="img/etes-theatre.png" alt="Logo ETES Theatre, apre etes.it" width="496" height="265"><span>Visita etes.it ↗</span></a></div>
   </section>
-  <section class="block">
-    <div class="wrap split">
-      <div class="prose">
-        <span class="eyebrow">La piattaforma</span>
-        <h2>Pensata per la sala, non adattata.</h2>
-        <p>Un teatro ha regole proprie: piante di sala con platea, palchi, galleria e loggione, stagioni costruite su turni di abbonamento, riduzioni e convenzioni, un botteghino che lavora accanto alla vendita online. ETES Theatre parte da queste regole invece di adattare un sistema generico.</p>
-        <p>Il risultato è uno strumento che il personale di biglietteria riconosce subito e che il pubblico usa con facilità, dalla scelta del posto in pianta fino all'ingresso in sala.</p>
-      </div>
-      <aside class="aside">
-        <dl>
-          <div><dt>Ruolo nel gruppo</dt><dd>Società di proprietà di COW Entertainment</dd></div>
-          <div><dt>Area</dt><dd>Tecnologia</dd></div>
-          <div><dt>Destinatari</dt><dd>Teatri, compagnie, stagioni di prosa, lirica, danza e musica</dd></div>
-          <div><dt>Sede</dt><dd>Come On Web S.r.l. · Centro Direzionale, Isola E/7, 80143 Napoli</dd></div>
-          <div><dt>Sito</dt><dd><a href="https://www.etes.it/" target="_blank" rel="noopener">etes.it</a></dd></div>
-          <div><dt>Società correlate</dt><dd><a href="#etes-sport">ETES Sport</a></dd></div>
-        </dl>
-      </aside>
+  <nav class="subnav" aria-label="In questa pagina"><div class="wrap"><a href="#et-panoramica">Panoramica</a><a href="#et-funzioni">Funzioni</a><a href="#et-info">Informazioni</a></div></nav>
+  <section class="sec" id="et-panoramica"><div class="wrap two">
+    <div class="txt"><span class="kicker" style="color:var(--violet)">La piattaforma</span><h2>Pensata per la sala, non adattata.</h2><p>Un teatro ha regole proprie: piante di sala con platea, palchi, galleria e loggione, stagioni costruite su turni di abbonamento, riduzioni e convenzioni, un botteghino che lavora accanto alla vendita online. ETES Theatre parte da queste regole invece di adattare un sistema generico.</p><p>Il risultato è uno strumento che il personale di biglietteria riconosce subito e che il pubblico usa con facilità, dalla scelta del posto in pianta fino all'ingresso in sala.</p></div>
+    <dl class="facts" id="et-info"><div><dt>Ruolo nel gruppo</dt><dd>Società di proprietà di COW Entertainment</dd></div><div><dt>Destinatari</dt><dd>Teatri, compagnie, stagioni di prosa, lirica, danza e musica</dd></div><div><dt>Sede</dt><dd>Come On Web S.r.l. · Centro Direzionale, Isola E/7, 80143 Napoli</dd></div><div><dt>Sito</dt><dd><a href="https://www.etes.it/" target="_blank" rel="noopener">etes.it</a></dd></div><div><dt>Società correlate</dt><dd><a href="#etes-sport">ETES Sport</a></dd></div></dl>
+  </div></section>
+  <section class="sec dark" id="et-funzioni"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Funzioni</span><h2>Il lavoro di un teatro, in un unico sistema</h2></div></div>
+    <div class="caps">
+      <div class="cap"><span class="n">Pianta di sala</span><h3>Platea, palchi, galleria, loggione</h3><p>Mappe fedeli della sala, con ordini di posto e visibilità reali.</p></div>
+      <div class="cap"><span class="n">Stagione</span><h3>Abbonamenti a turni</h3><p>Gestione di stagioni, turni, rinnovi e cambi turno con diritto di prelazione sul posto.</p></div>
+      <div class="cap"><span class="n">Tariffe</span><h3>Riduzioni e convenzioni</h3><p>Tariffe per under, over, scuole, gruppi e convenzioni, applicate con regole chiare.</p></div>
+      <div class="cap"><span class="n">Botteghino</span><h3>Vendita in sede e online</h3><p>Biglietteria fisica e canali digitali sulla stessa disponibilità, senza doppie vendite.</p></div>
+      <div class="cap"><span class="n">Accessi</span><h3>Controllo in sala</h3><p>Verifica dei titoli all'ingresso e dati di presenza per ogni recita.</p></div>
+      <div class="cap"><span class="n">Pubblico</span><h3>Relazione con gli spettatori</h3><p>Storico degli spettatori e comunicazioni per fidelizzare il pubblico della stagione.</p></div>
     </div>
-  </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Funzioni</span><h2>Il lavoro di un teatro, in un unico sistema</h2></div>
-      <div class="feats">
-        <div class="feat"><span class="k">Pianta di sala</span><h3>Platea, palchi, galleria, loggione</h3><p>Mappe fedeli della sala, con ordini di posto e visibilità reali.</p></div>
-        <div class="feat"><span class="k">Stagione</span><h3>Abbonamenti a turni</h3><p>Gestione di stagioni, turni, rinnovi e cambi turno con diritto di prelazione sul posto.</p></div>
-        <div class="feat"><span class="k">Tariffe</span><h3>Riduzioni e convenzioni</h3><p>Tariffe per under, over, scuole, gruppi e convenzioni, applicate con regole chiare.</p></div>
-        <div class="feat"><span class="k">Botteghino</span><h3>Vendita in sede e online</h3><p>Biglietteria fisica e canali digitali sulla stessa disponibilità, senza doppie vendite.</p></div>
-        <div class="feat"><span class="k">Accessi</span><h3>Controllo in sala</h3><p>Verifica dei titoli all'ingresso e dati di presenza per ogni recita.</p></div>
-        <div class="feat"><span class="k">Pubblico</span><h3>Relazione con gli spettatori</h3><p>Storico degli spettatori e comunicazioni per fidelizzare il pubblico della stagione.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="block"><div class="wrap pager"><a href="#etes-sport"><small>← Indietro</small><b>ETES Sport</b></a><a href="#arena-flegrea"><small>Avanti →</small><b>Arena Flegrea</b></a></div></section>
+  </div></section>
+  <section class="sec"><div class="wrap pager"><a href="#etes-sport"><small>← Indietro</small><b>ETES Sport</b></a><a href="#arena-flegrea"><small>Avanti →</small><b>Arena Flegrea</b></a></div></section>
 </div>
 
-<!-- ============ ARENA FLEGREA ============ -->
+<!-- ================= ARENA FLEGREA ================= -->
 <div data-view="arena-flegrea" hidden>
-  <section class="band" style="background:#131a2b;--brand-hi:#b9c3dc">
-    <div class="wrap">
-      <div class="txt">
-        <nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Il Gruppo</a><span>/</span><span>Luoghi</span><span>/</span><span>Arena Flegrea</span></nav>
-        <span class="eyebrow">Napoli · Monumento vincolato</span>
-        <h1>Arena Flegrea</h1>
-        <p class="lead">La seconda arena d'Italia dopo l'Arena di Verona e unica nel suo genere: un monumento vincolato come bene culturale che ospita una programmazione artistica di rilievo nazionale e internazionale.</p>
-      </div>
-      <div class="logo-col"><a class="site-link" href="https://www.arenaflegrea.com/" target="_blank" rel="noopener" title="Vai al sito dell'Arena Flegrea"><img src="img/arena-flegrea.png" alt="Logo Arena Flegrea, vai al sito arenaflegrea.com" width="502" height="270"><span>Visita arenaflegrea.com ↗</span></a></div>
-    </div>
+  <section class="phero"><img src="img/scene-arena.jpg" alt="" width="1600" height="900">
+    <div class="wrap"><div class="txt"><nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Home</a><span>/</span><span>Luoghi</span><span>/</span><span>Arena Flegrea</span></nav><span class="kicker" style="color:#b9c3dc">Napoli · Monumento vincolato</span><h1>Arena Flegrea</h1><p>La seconda arena d'Italia dopo l'Arena di Verona e unica nel suo genere: un bene culturale vincolato che ospita una programmazione di rilievo nazionale e internazionale.</p></div>
+    <a class="brandlink" href="https://www.arenaflegrea.com/" target="_blank" rel="noopener"><img src="img/arena-flegrea.png" alt="Logo Arena Flegrea, apre arenaflegrea.com" width="502" height="270"><span>Visita arenaflegrea.com ↗</span></a></div>
   </section>
-  <section class="block">
-    <div class="wrap split">
-      <div class="prose">
-        <span class="eyebrow">Il luogo</span>
-        <h2>Un monumento che vive di spettacolo.</h2>
-        <p>L'Arena Flegrea sorge a Napoli all'interno della Mostra d'Oltremare. Progettata dall'architetto Giulio De Luca e costruita tra il 1938 e il 1940, è stata la struttura più grande della Mostra. Si ispira ai teatri greco-romani ed è oggi un luogo di spettacolo all'aperto da circa 6.000 posti: 3.600 nella cavea superiore e 2.400 in quella inferiore.</p>
-        <p>Dopo un periodo di inattività, nel 2015 l'Arena è tornata a vivere grazie a una gestione privata guidata da Mario Floro Flores. Un piano di manutenzione straordinaria e restyling ha interessato palco, platea, camerini, foyer e impianti tecnici. Oggi la gestione fa capo a COW Entertainment.</p>
-      </div>
-      <aside class="aside">
-        <dl>
-          <div><dt>Ruolo nel gruppo</dt><dd>Struttura in gestione a COW Entertainment</dd></div>
-          <div><dt>Area</dt><dd>Luoghi</dd></div>
-          <div><dt>Indirizzo</dt><dd>Viale J. F. Kennedy 54, Napoli (Mostra d'Oltremare)</dd></div>
-          <div><dt>Capienza</dt><dd>Circa 6.000 posti</dd></div>
-          <div><dt>Tutela</dt><dd>Bene vincolato ai Beni Culturali</dd></div>
-          <div><dt>Sito</dt><dd><a href="https://www.arenaflegrea.com/" target="_blank" rel="noopener">arenaflegrea.com</a></dd></div>
-        </dl>
-      </aside>
+  <nav class="subnav" aria-label="In questa pagina"><div class="wrap"><a href="#af-luogo">Il luogo</a><a href="#af-storia">Storia</a><a href="#af-stagione">Stagione 2026</a><a href="#af-palco">Sul palco</a></div></nav>
+  <section class="sec" id="af-luogo"><div class="wrap two">
+    <div class="txt"><span class="kicker" style="color:var(--violet)">Il luogo</span><h2>Un monumento che vive di spettacolo.</h2><p>L'Arena Flegrea sorge a Napoli all'interno della Mostra d'Oltremare. Progettata dall'architetto Giulio De Luca e costruita tra il 1938 e il 1940, è stata la struttura più grande della Mostra. Si ispira ai teatri greco-romani ed è oggi un luogo di spettacolo all'aperto da circa 6.000 posti: 3.600 nella cavea superiore e 2.400 in quella inferiore.</p><p>Dopo un periodo di inattività, nel 2015 l'Arena è tornata a vivere grazie a una gestione privata guidata da Mario Floro Flores. Un piano di manutenzione straordinaria e restyling ha interessato palco, platea, camerini, foyer e impianti tecnici. Oggi la gestione fa capo a COW Entertainment.</p></div>
+    <dl class="facts"><div><dt>Indirizzo</dt><dd>Viale J. F. Kennedy 54, Napoli (Mostra d'Oltremare)</dd></div><div><dt>Capienza</dt><dd>Circa 6.000 posti</dd></div><div><dt>Tutela</dt><dd>Bene vincolato ai Beni Culturali</dd></div><div><dt>Ruolo nel gruppo</dt><dd>Struttura in gestione a COW Entertainment</dd></div><div><dt>Sito</dt><dd><a href="https://www.arenaflegrea.com/" target="_blank" rel="noopener">arenaflegrea.com</a></dd></div></dl>
+  </div></section>
+  <section class="sec paper" id="af-storia"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Storia</span><h2>Dalla Mostra d'Oltremare a oggi</h2></div></div>
+    <ol class="timeline">
+      <li><b>1938–40</b><p>Giulio De Luca progetta e costruisce l'Arena per la Prima Mostra Triennale delle Terre Italiane d'Oltremare.</p></li>
+      <li><b>1952</b><p>Inaugurazione come sede estiva del Teatro di San Carlo, con l'Aida di Giuseppe Verdi.</p></li>
+      <li><b>1980</b><p>L'Arena viene chiusa al pubblico e poi demolita.</p></li>
+      <li><b>2001</b><p>Ricostruita da De Luca a partire dal 1990, viene inaugurata di nuovo con acustica e visibilità migliorate.</p></li>
+      <li><b>2015</b><p>Inizia la gestione privata guidata da Mario Floro Flores, con il restyling di palco, platea, camerini, foyer e impianti.</p></li>
+      <li><b>2016</b><p>Nasce il Noisy Naples Fest, legato al progetto di gestione e valorizzazione dell'Arena.</p></li>
+    </ol>
+  </div></section>
+  <section class="sec" id="af-stagione"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Stagione 2026</span><h2>In cartellone</h2></div><p>Le date possono variare: il calendario aggiornato è su arenaflegrea.com.</p></div>
+    <div class="season">
+      <div class="month"><b>Giugno</b><ul><li>Genesis con orchestra</li><li>Gloria Gaynor con l'orchestra del Teatro di San Carlo</li><li>Eduardo De Crescenzo, Essenze Jazz</li></ul></div>
+      <div class="month"><b>Luglio</b><ul><li>Serena Brancale</li><li>Litfiba</li><li>Emma</li><li>Capo Plaza</li></ul></div>
+      <div class="month"><b>Agosto – Settembre</b><ul><li>Salmo</li><li>Mannarino</li><li>Sal Da Vinci</li></ul></div>
+      <div class="month"><b>Ottobre</b><ul><li>Gianni Morandi</li></ul></div>
     </div>
-  </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Perché è unica</span><h2>Patrimonio e programmazione</h2></div>
-      <div class="feats">
-        <div class="feat"><span class="k">Primato</span><h3>Seconda arena d'Italia</h3><p>Per importanza è la seconda arena del Paese dopo l'Arena di Verona.</p></div>
-        <div class="feat"><span class="k">Tutela</span><h3>Monumento vincolato</h3><p>Una struttura sottoposta a vincolo, gestita nel rispetto delle sue caratteristiche storiche.</p></div>
-        <div class="feat"><span class="k">Cartellone</span><h3>Respiro nazionale e internazionale</h3><p>Sul suo palco sono saliti Sting, Massive Attack, Robert Plant, Ludovico Einaudi, Noel Gallagher, OneRepublic, Paul Kalkbrenner, Chick Corea e Diana Krall.</p></div>
-        <div class="feat"><span class="k">Napoli</span><h3>La scena campana</h3><p>Enzo Avitabile, Edoardo Bennato, James Senese, 99 Posse e Nu Genea tra gli artisti di casa ospitati in Arena.</p></div>
-        <div class="feat"><span class="k">Arena on Stage</span><h3>Il pubblico sul palco</h3><p>Il format inaugurato l'11 aprile 2026 con il dj e producer francese Folamour porta gli spettatori direttamente sul palco.</p></div>
-        <div class="feat"><span class="k">Eventi</span><h3>Location per eventi aziendali</h3><p>Oltre alla stagione di spettacoli, l'Arena ospita eventi privati e aziendali.</p></div>
-      </div>
+  </div></section>
+  <section class="sec dark" id="af-palco"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Sul palco</span><h2>Patrimonio e programmazione</h2></div></div>
+    <div class="caps">
+      <div class="cap"><span class="n">Internazionale</span><h3>Grandi nomi</h3><p>Sting, Massive Attack, Robert Plant, Ludovico Einaudi, Noel Gallagher, OneRepublic, Paul Kalkbrenner, Chick Corea e Diana Krall.</p></div>
+      <div class="cap"><span class="n">Napoli</span><h3>La scena campana</h3><p>Enzo Avitabile, Edoardo Bennato, James Senese, 99 Posse e Nu Genea tra gli artisti di casa.</p></div>
+      <div class="cap"><span class="n">Arena on Stage</span><h3>Il pubblico sul palco</h3><p>Il format inaugurato l'11 aprile 2026 con il dj e producer francese Folamour porta gli spettatori direttamente sul palco.</p></div>
     </div>
-  </section>
-  <section class="block">
-    <div class="wrap split">
-      <div class="prose">
-        <span class="eyebrow">Storia</span>
-        <h2>Dalla Mostra d'Oltremare a oggi</h2>
-        <ol class="timeline">
-          <li><b>1938–1940</b><p>Giulio De Luca progetta e costruisce l'Arena per la Prima Mostra Triennale delle Terre Italiane d'Oltremare.</p></li>
-          <li><b>1952</b><p>A causa della guerra l'inaugurazione arriva solo nel 1952, come sede estiva del Teatro di San Carlo, con l'Aida di Giuseppe Verdi.</p></li>
-          <li><b>1980</b><p>L'Arena viene chiusa al pubblico e poi demolita.</p></li>
-          <li><b>1990–2001</b><p>De Luca la ricostruisce in forme semplificate e aggiornate; viene inaugurata di nuovo nel 2001, con un intervento che migliora acustica, visibilità e struttura.</p></li>
-          <li><b>2015</b><p>Inizia la gestione privata guidata da Mario Floro Flores, con il restyling di palco, platea, camerini, foyer e impianti.</p></li>
-          <li><b>2016</b><p>Nasce il Noisy Naples Fest, legato al progetto di gestione e valorizzazione dell'Arena.</p></li>
-        </ol>
-      </div>
-      <aside class="aside">
-        <span class="eyebrow">Stagione 2026</span>
-        <dl>
-          <div><dt>Giugno</dt><dd>Genesis con orchestra · Gloria Gaynor con l'orchestra del Teatro di San Carlo · Eduardo De Crescenzo, Essenze Jazz</dd></div>
-          <div><dt>Luglio</dt><dd>Serena Brancale · Litfiba · Emma · Capo Plaza</dd></div>
-          <div><dt>Agosto – Settembre</dt><dd>Salmo · Mannarino · Sal Da Vinci</dd></div>
-          <div><dt>Ottobre</dt><dd>Gianni Morandi</dd></div>
-        </dl>
-      </aside>
-    </div>
-  </section>
-  <section class="block"><div class="wrap pager"><a href="#etes-theatre"><small>← Indietro</small><b>ETES Theatre</b></a><a href="#make-it-happen"><small>Avanti →</small><b>Make It Happen</b></a></div></section>
+  </div></section>
+  <section class="sec"><div class="wrap pager"><a href="#etes-theatre"><small>← Indietro</small><b>ETES Theatre</b></a><a href="#make-it-happen"><small>Avanti →</small><b>Make It Happen</b></a></div></section>
 </div>
 
-<!-- ============ MAKE IT HAPPEN ============ -->
+<!-- ================= MAKE IT HAPPEN ================= -->
 <div data-view="make-it-happen" hidden>
-  <section class="band" style="background:#2b2b2b;--brand-hi:#3fd0d2">
-    <div class="wrap">
-      <div class="txt">
-        <nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Il Gruppo</a><span>/</span><span>Produzione</span><span>/</span><span>Make It Happen</span></nav>
-        <span class="eyebrow">Live entertainment</span>
-        <h1>Make It Happen</h1>
-        <p class="lead">La società del gruppo che produce musica e concerti nel live entertainment. Fondatrice e proprietaria del marchio Noisy Naples Fest.</p>
-      </div>
-      <div class="logo-col"><a class="site-link" href="https://www.makeithappen.it/" target="_blank" rel="noopener" title="Vai al sito di Make It Happen"><img src="img/make-it-happen.png" alt="Logo Make It Happen, vai al sito makeithappen.it" width="500" height="270"><span>Visita makeithappen.it ↗</span></a></div>
-    </div>
+  <section class="phero"><img src="img/scene-stage.jpg" alt="" width="1600" height="900">
+    <div class="wrap"><div class="txt"><nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Home</a><span>/</span><span>Produzione</span><span>/</span><span>Make It Happen</span></nav><span class="kicker" style="color:#3fd0d2">Live entertainment</span><h1>Make It Happen</h1><p>La società del gruppo che produce musica, concerti ed eventi live in tutta Italia. Fondatrice e proprietaria del marchio Noisy Naples Fest.</p></div>
+    <a class="brandlink" href="https://www.makeithappen.it/" target="_blank" rel="noopener"><img src="img/make-it-happen.png" alt="Logo Make It Happen, apre makeithappen.it" width="500" height="270"><span>Visita makeithappen.it ↗</span></a></div>
   </section>
-  <section class="block">
-    <div class="wrap split">
-      <div class="prose">
-        <span class="eyebrow">La società</span>
-        <h2>Dall'ingaggio dell'artista alla serata.</h2>
-        <p>Make It Happen è una società specializzata nella produzione di concerti, spettacoli ed eventi live, attiva in tutta Italia. Segue ogni evento dall'ideazione alla produzione, fino all'organizzazione tecnica e alla logistica.</p>
-        <p>Fondata da Mario Floro Flores, con un lungo percorso nell'entertainment, nel ticketing e nel marketing degli eventi, dal 2016 è alla guida del Noisy Naples Fest. In dieci anni il marchio ha portato a Napoli artisti come Sting, Robert Plant e Massive Attack.</p>
-      </div>
-      <aside class="aside">
-        <dl>
-          <div><dt>Ruolo nel gruppo</dt><dd>Società di COW Entertainment</dd></div>
-          <div><dt>Fondatore</dt><dd>Mario Floro Flores</dd></div>
-          <div><dt>Marchi di proprietà</dt><dd><a href="#noisy-naples-fest">Noisy Naples Fest</a></dd></div>
-          <div><dt>P.IVA</dt><dd>10908461212</dd></div>
-          <div><dt>Sito</dt><dd><a href="https://www.makeithappen.it/" target="_blank" rel="noopener">makeithappen.it</a></dd></div>
-        </dl>
-      </aside>
+  <nav class="subnav" aria-label="In questa pagina"><div class="wrap"><a href="#mh-societa">La società</a><a href="#mh-attivita">Attività</a></div></nav>
+  <section class="sec" id="mh-societa"><div class="wrap two">
+    <div class="txt"><span class="kicker" style="color:var(--violet)">La società</span><h2>Dall'idea alla serata.</h2><p>Make It Happen è una società specializzata nella produzione di concerti, spettacoli ed eventi live, attiva in tutta Italia. Segue ogni evento dall'ideazione alla produzione, fino all'organizzazione tecnica e alla logistica.</p><p>Fondata da Mario Floro Flores, con un lungo percorso nell'entertainment, nel ticketing e nel marketing degli eventi, dal 2016 è alla guida del Noisy Naples Fest. In dieci anni il marchio ha portato a Napoli artisti come Sting, Robert Plant e Massive Attack.</p></div>
+    <dl class="facts"><div><dt>Fondatore</dt><dd>Mario Floro Flores</dd></div><div><dt>Marchi di proprietà</dt><dd><a href="#noisy-naples-fest">Noisy Naples Fest</a></dd></div><div><dt>P.IVA</dt><dd>10908461212</dd></div><div><dt>Email</dt><dd>info@makeithappen.it</dd></div><div><dt>Sito</dt><dd><a href="https://www.makeithappen.it/" target="_blank" rel="noopener">makeithappen.it</a></dd></div></dl>
+  </div></section>
+  <section class="sec dark" id="mh-attivita"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Attività</span><h2>Cosa facciamo</h2></div></div>
+    <div class="caps">
+      <div class="cap"><span class="n">Concerti</span><h3>Produzione di concerti e spettacoli</h3><p>Organizzazione e produzione di concerti per artisti italiani e internazionali.</p></div>
+      <div class="cap"><span class="n">Festival</span><h3>Organizzazione di festival</h3><p>Ideazione, proprietà e direzione del Noisy Naples Fest, con più palchi e programmazione su più giornate.</p></div>
+      <div class="cap"><span class="n">Servizi tecnici</span><h3>Audio, luci, video, strutture</h3><p>Servizi tecnici professionali per eventi: audio, luci, video, strutture, palchi e assistenza specializzata.</p></div>
     </div>
-  </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Attività</span><h2>Cosa facciamo</h2></div>
-      <div class="feats">
-        <div class="feat"><span class="k">Musica</span><h3>Produzione musicale</h3><p>Progetti musicali seguiti dalla produzione alla presentazione dal vivo.</p></div>
-        <div class="feat"><span class="k">Concerti</span><h3>Produzione di concerti</h3><p>Organizzazione e produzione di concerti per artisti italiani e internazionali.</p></div>
-        <div class="feat"><span class="k">Festival</span><h3>Noisy Naples Fest</h3><p>Ideazione, proprietà e direzione del festival internazionale di Napoli.</p></div>
-        <div class="feat"><span class="k">Servizi tecnici</span><h3>Audio, luci, video, strutture</h3><p>Servizi tecnici professionali per eventi: audio, luci, video, strutture, palchi e assistenza tecnica specializzata.</p></div>
-        <div class="feat"><span class="k">Organizzazione</span><h3>Dall'idea alla logistica</h3><p>Ideazione, produzione, organizzazione tecnica e logistica di eventi live in tutta Italia.</p></div>
-        <div class="feat"><span class="k">Festival</span><h3>Organizzazione di festival</h3><p>Progettazione e gestione di festival con più palchi, aree ristoro e programmazione su più giornate.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="block"><div class="wrap pager"><a href="#arena-flegrea"><small>← Indietro</small><b>Arena Flegrea</b></a><a href="#noisy-naples-fest"><small>Avanti →</small><b>Noisy Naples Fest</b></a></div></section>
+  </div></section>
+  <section class="sec"><div class="wrap pager"><a href="#arena-flegrea"><small>← Indietro</small><b>Arena Flegrea</b></a><a href="#noisy-naples-fest"><small>Avanti →</small><b>Noisy Naples Fest</b></a></div></section>
 </div>
 
-<!-- ============ NOISY NAPLES FEST ============ -->
+<!-- ================= NOISY NAPLES FEST ================= -->
 <div data-view="noisy-naples-fest" hidden>
-  <section class="band" style="background:#13131a;--brand-hi:#ece6df">
-    <div class="wrap">
-      <div class="txt">
-        <nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Il Gruppo</a><span>/</span><a href="#make-it-happen">Make It Happen</a><span>/</span><span>Noisy Naples Fest</span></nav>
-        <span class="eyebrow">Festival internazionale · Napoli</span>
-        <h1>Noisy Naples Fest</h1>
-        <p class="lead">Il festival internazionale che si tiene nella città di Napoli. Un marchio fondato e di proprietà di Make It Happen.</p>
-      </div>
-      <div class="logo-col"><a class="site-link" href="https://www.noisynaples.com/" target="_blank" rel="noopener" title="Vai al sito di Noisy Naples Fest"><img src="img/noisy.png" alt="Logo Noisy Naples Fest, vai al sito noisynaples.com" width="500" height="204"><span>Visita noisynaples.com ↗</span></a></div>
-    </div>
+  <section class="phero"><img src="img/scene-festival.jpg" alt="" width="1600" height="900">
+    <div class="wrap"><div class="txt"><nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Home</a><span>/</span><a href="#make-it-happen">Make It Happen</a><span>/</span><span>Noisy Naples Fest</span></nav><span class="kicker" style="color:#ece6df">Festival internazionale · Napoli</span><h1>Noisy Naples Fest</h1><p>Il festival internazionale che si tiene nella città di Napoli, nato nel 2016. Un marchio fondato e di proprietà di Make It Happen.</p></div>
+    <a class="brandlink" href="https://www.noisynaples.com/" target="_blank" rel="noopener"><img src="img/noisy.png" alt="Logo Noisy Naples Fest, apre noisynaples.com" width="500" height="204"><span>Visita noisynaples.com ↗</span></a></div>
   </section>
-  <section class="block">
-    <div class="wrap split">
-      <div class="prose">
-        <span class="eyebrow">Il festival</span>
-        <p class="quote">Napoli come palco internazionale.</p>
-        <p>Noisy Naples Fest nasce nel 2016 da un'idea di Mario Floro Flores, all'interno del progetto di gestione e valorizzazione dell'Arena Flegrea. In dieci anni è diventato uno dei principali appuntamenti musicali dell'estate nel Sud Italia, portando a Napoli artisti come Sting, Robert Plant, Massive Attack, Noel Gallagher e OneRepublic.</p>
-        <p>Nel 2023, alla sesta edizione, il festival ha aggiunto una sezione off con sei concerti nel Giardino Romantico di Palazzo Reale, con Sergio Cammariere, Carmen Consoli, Marina Rei, Planet Funk, Coma Cose e Raphael Gualazzi. Nel 2026 la nona edizione è diventata un festival di due giorni in una nuova area della Mostra d'Oltremare.</p>
-      </div>
-      <aside class="aside">
-        <dl>
-          <div><dt>Proprietà</dt><dd><a href="#make-it-happen">Make It Happen</a></dd></div>
-          <div><dt>Gruppo</dt><dd>COW Entertainment</dd></div>
-          <div><dt>Ideatore</dt><dd>Mario Floro Flores</dd></div>
-          <div><dt>Prima edizione</dt><dd>2016</dd></div>
-          <div><dt>Patrocinio</dt><dd>Comune di Napoli, Assessorato al Turismo · progetto Napoli Città della Musica</dd></div>
-          <div><dt>Biglietteria ufficiale</dt><dd>ETES</dd></div>
-          <div><dt>Sito</dt><dd><a href="https://www.noisynaples.com/" target="_blank" rel="noopener">noisynaples.com</a></dd></div>
-        </dl>
-      </aside>
+  <nav class="subnav" aria-label="In questa pagina"><div class="wrap"><a href="#nn-2026">Edizione 2026</a><a href="#nn-storia">Storia</a></div></nav>
+  <section class="sec dark" id="nn-2026"><div class="wrap">
+    <div class="sec-head"><div><span class="kicker">Edizione 2026 · nona edizione</span><h2>23 e 24 luglio, Mostra d'Oltremare</h2></div><p>Due giornate nella nuova area di viale delle 28 Fontane, con quattro concerti al giorno, aree food, drink e dj set, e after show nel foyer dell'Arena Flegrea.</p></div>
+    <div class="lineup">
+      <div class="day"><span class="kicker">Giovedì 23 luglio</span><ul><li>Franz Ferdinand</li><li>Skunk Anansie</li><li>Bluvertigo</li></ul></div>
+      <div class="day"><span class="kicker">Venerdì 24 luglio</span><ul><li>Kasabian</li><li>Subsonica</li><li>Planet Funk</li></ul></div>
     </div>
-  </section>
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Edizione 2026 · nona edizione</span>
-        <h2>23 e 24 luglio, Mostra d'Oltremare</h2>
-        <p class="lead">Due giornate nella nuova area di viale delle 28 Fontane, con quattro concerti al giorno, aree food, drink e dj set, e after show nel foyer dell'Arena Flegrea.</p>
-      </div>
-      <div class="days">
-        <div class="day"><span class="eyebrow">Giovedì 23 luglio</span><ul><li>Franz Ferdinand</li><li>Skunk Anansie</li><li>Bluvertigo</li></ul></div>
-        <div class="day"><span class="eyebrow">Venerdì 24 luglio</span><ul><li>Kasabian</li><li>Subsonica</li><li>Planet Funk</li></ul></div>
-      </div>
-    </div>
-  </section>
-  <section class="block"><div class="wrap pager"><a href="#make-it-happen"><small>← Indietro</small><b>Make It Happen</b></a><a href="#contatti"><small>Avanti →</small><b>Contatti</b></a></div></section>
+  </div></section>
+  <section class="sec" id="nn-storia"><div class="wrap two">
+    <div class="txt"><span class="kicker" style="color:var(--violet)">Il festival</span><h2>Napoli come palco internazionale.</h2><p>Noisy Naples Fest nasce nel 2016 da un'idea di Mario Floro Flores, all'interno del progetto di gestione e valorizzazione dell'Arena Flegrea. In dieci anni è diventato uno dei principali appuntamenti musicali dell'estate nel Sud Italia, portando a Napoli artisti come Sting, Robert Plant, Massive Attack, Noel Gallagher e OneRepublic.</p><p>Nel 2023, alla sesta edizione, il festival ha aggiunto una sezione off con sei concerti nel Giardino Romantico di Palazzo Reale, con Sergio Cammariere, Carmen Consoli, Marina Rei, Planet Funk, Coma Cose e Raphael Gualazzi.</p></div>
+    <dl class="facts"><div><dt>Proprietà</dt><dd><a href="#make-it-happen">Make It Happen</a></dd></div><div><dt>Ideatore</dt><dd>Mario Floro Flores</dd></div><div><dt>Prima edizione</dt><dd>2016</dd></div><div><dt>Patrocinio</dt><dd>Comune di Napoli, Assessorato al Turismo · Napoli Città della Musica</dd></div><div><dt>Biglietteria ufficiale</dt><dd>ETES</dd></div><div><dt>Sito</dt><dd><a href="https://www.noisynaples.com/" target="_blank" rel="noopener">noisynaples.com</a></dd></div></dl>
+  </div></section>
+  <section class="sec"><div class="wrap pager"><a href="#make-it-happen"><small>← Indietro</small><b>Make It Happen</b></a><a href="#news"><small>Avanti →</small><b>Notizie</b></a></div></section>
 </div>
 
-<!-- ============ CONTATTI ============ -->
-<div data-view="contatti" hidden>
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Contatti</span>
-        <h1>Contatti del gruppo</h1>
-        <p class="lead">Recapiti e siti ufficiali delle società di COW Entertainment.</p>
-      </div>
-      <div class="contacts">
-        <div class="contact"><h3>COW Entertainment</h3><dl><div><dt>Ragione sociale</dt><dd>Come On Web S.r.l.</dd></div><div><dt>Sede</dt><dd>Centro Direzionale, Isola E/7 · 80143 Napoli</dd></div></dl></div>
-        <div class="contact"><h3>ETES Sport · ETES Theatre</h3><dl><div><dt>Società</dt><dd>Come On Web S.r.l.</dd></div><div><dt>Sede</dt><dd>Centro Direzionale, Isola E/7 · 80143 Napoli</dd></div><div><dt>Biglietteria</dt><dd>Partner ufficiale di Arena Flegrea e Noisy Naples Fest</dd></div><div><dt>Sito</dt><dd><a href="https://www.etes.it/" target="_blank" rel="noopener">etes.it</a></dd></div></dl></div>
-        <div class="contact"><h3>Arena Flegrea</h3><dl><div><dt>Indirizzo</dt><dd>Viale J. F. Kennedy 54 · Napoli</dd></div><div><dt>Sito</dt><dd><a href="https://www.arenaflegrea.com/" target="_blank" rel="noopener">arenaflegrea.com</a></dd></div></dl></div>
-        <div class="contact"><h3>Make It Happen</h3><dl><div><dt>Email</dt><dd>info@makeithappen.it</dd></div><div><dt>P.IVA</dt><dd>10908461212</dd></div><div><dt>Sito</dt><dd><a href="https://www.makeithappen.it/" target="_blank" rel="noopener">makeithappen.it</a></dd></div></dl></div>
-        <div class="contact"><h3>Noisy Naples Fest</h3><dl><div><dt>Email</dt><dd>info@noisynaples.com</dd></div><div><dt>Sito</dt><dd><a href="https://www.noisynaples.com/" target="_blank" rel="noopener">noisynaples.com</a></dd></div></dl></div>
-      </div>
-    </div>
+<!-- ================= NEWS ================= -->
+<div data-view="news" hidden>
+  <section class="phero"><img src="img/scene-ribbons.jpg" alt="" width="1600" height="900">
+    <div class="wrap"><div class="txt"><nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Home</a><span>/</span><span>Notizie</span></nav><h1>Notizie</h1><p>Festival, stagioni e piattaforme: le novità dalle società di COW Entertainment.</p></div></div>
   </section>
+  <section class="sec"><div class="wrap">
+    <div class="chips" role="group" aria-label="Filtra per argomento" id="chips"></div>
+    <div class="grid3" id="newsgrid"></div>
+  </div></section>
+</div>
+
+<!-- ================= CONTATTI ================= -->
+<div data-view="contatti" hidden>
+  <section class="phero"><img src="img/scene-arena.jpg" alt="" width="1600" height="900">
+    <div class="wrap"><div class="txt"><nav class="crumbs" aria-label="Percorso"><a href="#gruppo">Home</a><span>/</span><span>Contatti</span></nav><h1>Contatti</h1><p>Recapiti e siti ufficiali delle società di COW Entertainment.</p></div></div>
+  </section>
+  <section class="sec"><div class="wrap">
+    <div class="contacts">
+      <div class="contact"><h3>COW Entertainment</h3><dl><div><dt>Ragione sociale</dt><dd>Come On Web S.r.l.</dd></div><div><dt>Sede</dt><dd>Centro Direzionale, Isola E/7 · 80143 Napoli</dd></div></dl></div>
+      <div class="contact"><h3>ETES Sport · ETES Theatre</h3><dl><div><dt>Società</dt><dd>Come On Web S.r.l.</dd></div><div><dt>Sede</dt><dd>Centro Direzionale, Isola E/7 · 80143 Napoli</dd></div><div><dt>Sito</dt><dd><a href="https://www.etes.it/" target="_blank" rel="noopener">etes.it</a></dd></div></dl></div>
+      <div class="contact"><h3>Arena Flegrea</h3><dl><div><dt>Indirizzo</dt><dd>Viale J. F. Kennedy 54 · Napoli</dd></div><div><dt>Sito</dt><dd><a href="https://www.arenaflegrea.com/" target="_blank" rel="noopener">arenaflegrea.com</a></dd></div></dl></div>
+      <div class="contact"><h3>Make It Happen</h3><dl><div><dt>Email</dt><dd><span>info@makeithappen.it</span><button class="copy" type="button" data-copy="info@makeithappen.it">Copia</button></dd></div><div><dt>P.IVA</dt><dd>10908461212</dd></div><div><dt>Sito</dt><dd><a href="https://www.makeithappen.it/" target="_blank" rel="noopener">makeithappen.it</a></dd></div></dl></div>
+      <div class="contact"><h3>Noisy Naples Fest</h3><dl><div><dt>Email</dt><dd><span>info@noisynaples.com</span><button class="copy" type="button" data-copy="info@noisynaples.com">Copia</button></dd></div><div><dt>Sito</dt><dd><a href="https://www.noisynaples.com/" target="_blank" rel="noopener">noisynaples.com</a></dd></div></dl></div>
+    </div>
+  </div></section>
 </div>
 
 </main>
 
 <footer>
   <div class="wrap">
-    <div>
-      <h4>COW Entertainment</h4>
-      <p>Holding dell'entertainment: tecnologia per il ticketing, gestione di luoghi di spettacolo, produzione di concerti e festival.</p>
+    <div class="f-top">
+      <div><a class="logo" href="#gruppo"><b>COW</b><span>Entertainment</span></a><p>Holding dell'entertainment: tecnologia per il ticketing, gestione di luoghi di spettacolo, produzione di concerti e festival.</p></div>
+      <div><h4>Gruppo</h4><ul><li><a href="#gruppo">Home</a></li><li><a href="#struttura">Struttura</a></li><li><a href="#news">Notizie</a></li><li><a href="#contatti">Contatti</a></li></ul></div>
+      <div><h4>Tecnologia</h4><ul><li><a href="#etes-sport">ETES Sport</a></li><li><a href="#etes-theatre">ETES Theatre</a></li><li><a href="https://www.etes.it/" target="_blank" rel="noopener">etes.it ↗</a></li></ul></div>
+      <div><h4>Luoghi</h4><ul><li><a href="#arena-flegrea">Arena Flegrea</a></li><li><a href="https://www.arenaflegrea.com/" target="_blank" rel="noopener">arenaflegrea.com ↗</a></li></ul></div>
+      <div><h4>Produzione</h4><ul><li><a href="#make-it-happen">Make It Happen</a></li><li><a href="#noisy-naples-fest">Noisy Naples Fest</a></li><li><a href="https://www.makeithappen.it/" target="_blank" rel="noopener">makeithappen.it ↗</a></li><li><a href="https://www.noisynaples.com/" target="_blank" rel="noopener">noisynaples.com ↗</a></li></ul></div>
     </div>
-    <div><h4>Tecnologia</h4><ul><li><a href="#etes-sport">ETES Sport</a></li><li><a href="#etes-theatre">ETES Theatre</a></li><li><a href="https://www.etes.it/" target="_blank" rel="noopener">etes.it ↗</a></li></ul></div>
-    <div><h4>Luoghi</h4><ul><li><a href="#arena-flegrea">Arena Flegrea</a></li><li><a href="https://www.arenaflegrea.com/" target="_blank" rel="noopener">arenaflegrea.com ↗</a></li></ul></div>
-    <div><h4>Produzione</h4><ul><li><a href="#make-it-happen">Make It Happen</a></li><li><a href="#noisy-naples-fest">Noisy Naples Fest</a></li><li><a href="https://www.makeithappen.it/" target="_blank" rel="noopener">makeithappen.it ↗</a></li><li><a href="https://www.noisynaples.com/" target="_blank" rel="noopener">noisynaples.com ↗</a></li><li><a href="#contatti">Contatti</a></li></ul></div>
+    <div class="f-bot"><span>© 2026 COW Entertainment · Come On Web S.r.l. Tutti i diritti riservati.</span><span>Centro Direzionale, Isola E/7 · 80143 Napoli</span></div>
   </div>
-  <div class="legal"><div class="wrap"><span>© 2026 COW Entertainment · Come On Web S.r.l. Tutti i diritti riservati.</span><span>Centro Direzionale, Isola E/7 · 80143 Napoli</span></div></div>
 </footer>
+
+<button class="totop" type="button" id="totop" aria-label="Torna su" hidden><svg><use href="#i-up"/></svg></button>
 
 <script>
 (function(){
+  /* ---------- data ---------- */
+  var NEWS=[
+    {t:'Noisy Naples Fest 2026: Franz Ferdinand, Kasabian e Skunk Anansie a Napoli',d:'13 febbraio 2026',c:'Festival',img:'scene-festival',h:'#noisy-naples-fest',p:'La nona edizione diventa un festival di due giorni, il 23 e 24 luglio, in una nuova area della Mostra d\'Oltremare.'},
+    {t:'Arena on Stage: il pubblico sale sul palco dell\'Arena Flegrea',d:'11 aprile 2026',c:'Arena',img:'scene-stage',h:'#arena-flegrea',p:'Il nuovo format debutta con il dj e producer francese Folamour e porta gli spettatori direttamente sul palco.'},
+    {t:'La stagione 2026 dell\'Arena Flegrea',d:'Stagione 2026',c:'Arena',img:'scene-arena',h:'#arena-flegrea',p:'Da Genesis con orchestra a Gloria Gaynor con l\'orchestra del San Carlo, fino a Litfiba, Salmo e Gianni Morandi.'},
+    {t:'Planimetria 3D: scegliere il posto guardando il campo',d:'ETES Sport',c:'Tecnologia',img:'scene-stadium',h:'#etes-sport',p:'Settori, file e posti in tre dimensioni, con la visuale reale prima dell\'acquisto.'},
+    {t:'Abbonamenti a turni e piante di sala per i teatri',d:'ETES Theatre',c:'Tecnologia',img:'scene-theatre',h:'#etes-theatre',p:'Platea, palchi, galleria e loggione, rinnovi e cambi turno: le regole del teatro in un unico sistema.'},
+    {t:'Dati e intelligenza artificiale al servizio delle vendite',d:'ETES Sport',c:'Tecnologia',img:'scene-data',h:'#etes-sport',p:'Modelli che leggono l\'andamento delle vendite e il comportamento del pubblico per orientare le scelte commerciali.'}
+  ];
+  function card(n){return '<a class="ins" href="'+n.h+'"><figure><img src="img/'+n.img+'.jpg" alt="" width="1600" height="900" loading="lazy"></figure><div class="b"><div class="meta"><span>'+n.c+'</span><time>'+n.d+'</time></div><h3>'+n.t+'</h3><p>'+n.p+'</p></div></a>';}
+  document.getElementById('rail').innerHTML=NEWS.map(card).join('');
+  var grid=document.getElementById('newsgrid'),chips=document.getElementById('chips');
+  var cats=['Tutte','Festival','Arena','Tecnologia'];
+  chips.innerHTML=cats.map(function(c,i){return '<button class="chip" type="button" aria-pressed="'+(i===0)+'">'+c+'</button>'}).join('');
+  function renderNews(c){grid.innerHTML=NEWS.filter(function(n){return c==='Tutte'||n.c===c}).map(card).join('');}
+  renderNews('Tutte');
+  chips.addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;[].forEach.call(chips.children,function(x){x.setAttribute('aria-pressed',x===b)});renderNews(b.textContent);});
+
+  /* ---------- router ---------- */
   var views=[].slice.call(document.querySelectorAll('[data-view]'));
   var names=views.map(function(v){return v.dataset.view});
-  var anchors={struttura:'gruppo',aree:'gruppo'};
-  var nav=document.getElementById('nav'),btn=document.getElementById('menu-btn');
+  var TITLES={'etes-sport':'ETES Sport','etes-theatre':'ETES Theatre','arena-flegrea':'Arena Flegrea','make-it-happen':'Make It Happen','noisy-naples-fest':'Noisy Naples Fest','news':'Notizie','contatti':'Contatti'};
+  var current=null;
+  function viewOf(id){var el=document.getElementById(id);if(!el)return null;var v=el.closest('[data-view]');return v?v.dataset.view:null;}
   function route(){
-    var h=(location.hash||'').slice(1);
-    var view=names.indexOf(h)>-1?h:(anchors[h]||'gruppo');
-    views.forEach(function(v){v.hidden=v.dataset.view!==view});
-    [].forEach.call(nav.querySelectorAll('a'),function(a){
-      if(a.getAttribute('href')==='#'+view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
-    });
-    var t=TITLES[view]; document.title=t?t+' · COW Entertainment':'COW Entertainment';
-    nav.classList.remove('open');btn.setAttribute('aria-expanded','false');
-    if(anchors[h]){var el=document.getElementById(h);if(el){el.scrollIntoView();return}}
+    var h=decodeURIComponent((location.hash||'').slice(1));
+    var view=names.indexOf(h)>-1?h:(viewOf(h)||'gruppo');
+    if(view!==current){views.forEach(function(v){v.hidden=v.dataset.view!==view});current=view;
+      document.title=TITLES[view]?TITLES[view]+' · COW Entertainment':'COW Entertainment';
+      if(view==='gruppo')hero.start();else hero.stop();}
+    [].forEach.call(document.querySelectorAll('.menu>li>a'),function(a){a.getAttribute('href')==='#'+view?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')});
+    closeMenus();
+    if(h&&names.indexOf(h)<0){var el=document.getElementById(h);if(el){requestAnimationFrame(function(){el.scrollIntoView()});return;}}
     window.scrollTo(0,0);
   }
-  var TITLES={'etes-sport':'ETES Sport','etes-theatre':'ETES Theatre','arena-flegrea':'Arena Flegrea','make-it-happen':'Make It Happen','noisy-naples-fest':'Noisy Naples Fest','contatti':'Contatti'};
-  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false')});
-  window.addEventListener('hashchange',route);
+
+  /* ---------- mega menu ---------- */
+  var menu=document.getElementById('menu'),burger=document.getElementById('burger');
+  var triggers=[].slice.call(menu.querySelectorAll('button[aria-controls]'));
+  function closeMenus(except){triggers.forEach(function(b){if(b===except)return;b.setAttribute('aria-expanded','false');document.getElementById(b.getAttribute('aria-controls')).hidden=true;});
+    if(!except){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');}}
+  triggers.forEach(function(b){b.addEventListener('click',function(){var open=b.getAttribute('aria-expanded')==='true';closeMenus(b);b.setAttribute('aria-expanded',String(!open));document.getElementById(b.getAttribute('aria-controls')).hidden=open;});});
+  burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',String(o));});
+  document.addEventListener('click',function(e){if(!e.target.closest('.top'))closeMenus();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeMenus();closeSearch();}});
+
+  /* ---------- hero carousel ---------- */
+  var hero=(function(){
+    var root=document.getElementById('hero'),slides=[].slice.call(root.querySelectorAll('.slide')),dots=[].slice.call(root.querySelectorAll('.dot'));
+    var i=0,timer=null,DUR=7000,paused=false,pbtn=document.getElementById('h-pause');
+    function show(n){i=(n+slides.length)%slides.length;slides.forEach(function(s,k){s.classList.toggle('on',k===i);s.setAttribute('aria-hidden',k!==i)});
+      dots.forEach(function(d,k){d.classList.remove('on');d.classList.toggle('done',k<i);d.setAttribute('aria-selected',k===i);});
+      void dots[i].offsetWidth;dots[i].classList.add('on');schedule();}
+    function schedule(){clearTimeout(timer);if(!paused&&current==='gruppo')timer=setTimeout(function(){show(i+1)},DUR);}
+    dots.forEach(function(d,k){d.addEventListener('click',function(){show(k)})});
+    document.getElementById('h-prev').addEventListener('click',function(){show(i-1)});
+    document.getElementById('h-next').addEventListener('click',function(){show(i+1)});
+    pbtn.addEventListener('click',function(){paused=!paused;root.classList.toggle('paused',paused);pbtn.setAttribute('aria-label',paused?'Riprendi':'Metti in pausa');pbtn.innerHTML='<svg><use href="#i-'+(paused?'play':'pause')+'"/></svg>';schedule();});
+    if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){paused=true;root.classList.add('paused');pbtn.innerHTML='<svg><use href="#i-play"/></svg>';}
+    root.style.setProperty('--dur',DUR+'ms');
+    return {start:function(){schedule()},stop:function(){clearTimeout(timer)}};
+  })();
+
+  /* ---------- rail ---------- */
+  document.querySelectorAll('[data-rail]').forEach(function(b){b.addEventListener('click',function(){var r=document.getElementById('rail');r.scrollBy({left:Number(b.dataset.rail)*r.clientWidth*0.9,behavior:'smooth'});});});
+
+  /* ---------- tabs ---------- */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function selectTab(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
+  tabs.forEach(function(t,k){t.addEventListener('click',function(){selectTab(t)});t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(k+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];selectTab(n);n.focus();}});});
+
+  /* ---------- search ---------- */
+  var search=document.getElementById('search'),q=document.getElementById('q'),results=document.getElementById('results');
+  var INDEX=[];
+  function words(el){if(!el)return '';var out=[],w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);while(w.nextNode()){var t=w.currentNode.nodeValue.trim();if(t)out.push(t);}return out.join(' ');}
+  views.forEach(function(v){var name=v.dataset.view;var title=TITLES[name]||'Home';
+    v.querySelectorAll('h1,h2,h3').forEach(function(h){if(h.closest('.ins'))return;var sec=h.closest('[id]');var target=sec&&sec!==v&&v.contains(sec)&&sec.id?sec.id:name;
+      var ctx=(h.closest('.cap,.month,.panel .txt,.two .txt,.co,.contact,.slide,.statement,.day,.sec-head')||h.parentElement);
+      INDEX.push({title:h.textContent.trim(),page:title,href:'#'+target,text:words(ctx)});});});
+  NEWS.forEach(function(n){INDEX.push({title:n.t,page:'Notizie',href:n.h,text:n.p})});
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+  function doSearch(){var term=norm(q.value.trim());if(!term){results.innerHTML='';return;}
+    var seen={},out=INDEX.filter(function(r){var k=r.title;if(seen[k])return false;var hit=norm(r.title+' '+r.text).indexOf(term)>-1;if(hit)seen[k]=1;return hit;}).slice(0,12);
+    results.innerHTML=out.length?out.map(function(r){var t=r.text;var ix=norm(t).indexOf(term);var snip=ix>60?'…'+t.slice(ix-50,ix+110)+'…':t.slice(0,160)+(t.length>160?'…':'');return '<li><a href="'+r.href+'"><em>'+r.page+'</em><b>'+r.title+'</b><span>'+snip+'</span></a></li>'}).join(''):'<li style="padding:1.2rem 0;color:#a9a9b4">Nessun risultato per “'+q.value.replace(/</g,'&lt;')+'”. Prova con “Arena”, “festival” o “biglietteria”.</li>';}
+  function openSearch(){search.hidden=false;document.body.style.overflow='hidden';setTimeout(function(){q.focus()},30);}
+  function closeSearch(){if(search.hidden)return;search.hidden=true;document.body.style.overflow='';}
+  document.getElementById('open-search').addEventListener('click',openSearch);
+  document.getElementById('close-search').addEventListener('click',closeSearch);
+  q.addEventListener('input',doSearch);
+  document.getElementById('suggest').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;q.value=b.textContent;doSearch();q.focus();});
+  results.addEventListener('click',function(e){if(e.target.closest('a'))closeSearch();});
+
+  /* ---------- misc ---------- */
+  document.addEventListener('click',function(e){var b=e.target.closest('.copy');if(!b)return;var t=b.dataset.copy;
+    function done(){b.textContent='Copiato';setTimeout(function(){b.textContent='Copia'},1600);}
+    try{navigator.clipboard.writeText(t).then(done,function(){sel(b)});}catch(err){sel(b);}
+    function sel(b){var s=b.previousElementSibling;var r=document.createRange();r.selectNodeContents(s);var w=getSelection();w.removeAllRanges();w.addRange(r);b.textContent='Selezionato';}});
+  var totop=document.getElementById('totop');
+  addEventListener('scroll',function(){totop.hidden=scrollY<700},{passive:true});
+  totop.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
+
+  addEventListener('hashchange',route);
   route();
 })();
 </script>
