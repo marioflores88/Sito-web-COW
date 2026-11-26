@@ -5,7 +5,7 @@ Sito istituzionale della holding COW Entertainment (Come On Web S.r.l.) e delle 
 Online su: https://marioflores88.github.io/Sito-web-COW/
 
 - `index.html`: pagina unica con una vista per ogni sezione (`#gruppo`, `#etes-sport`, `#etes-theatre`, `#arena-flegrea`, `#make-it-happen`, `#noisy-naples-fest`, `#contatti`).
-- `img/`: loghi delle società.
+- `img/`: loghi delle società e immagini dei concetti (`scene-*.jpg`, scene 3D generate: stadio, teatro, arena, palco, festival, dati, onde di colore). Si possono sostituire con fotografie reali mantenendo lo stesso nome file.
 - `.github/workflows/pages.yml`: pubblica il sito su GitHub Pages a ogni modifica su `main` (oppure a mano da **Actions → Sito su GitHub Pages → Run workflow**).
 
 Per vederlo in locale: `python3 -m http.server`, poi aprire http://localhost:8000.
